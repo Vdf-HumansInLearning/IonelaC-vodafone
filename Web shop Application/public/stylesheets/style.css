@@ -1,0 +1,730 @@
+/* * {
+    box-sizing: border-box;
+} */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Serif', serif;
+}
+
+.page-wrapper {
+    position: relative;
+}
+
+.container {
+    position: relative;
+}
+
+p.home-item {
+    color: white;
+    font-weight: bold;
+    font-size: 34px;
+}
+
+p.home-item.p1 {
+    margin-left: 62px;
+}
+
+p.home-item.p2 {
+    position: absolute;
+    left: 608px;
+    top: 0px;
+}
+
+p.home-item.p3 {
+    position: absolute;
+    left: 867px;
+    top: 0px;
+}
+
+p.home-item.p4 {
+    position: absolute;
+    top: 0px;
+    left: 1139px;
+}
+
+button.home-item {
+    position: absolute;
+    top: 28px;
+    left: 1500px;
+    width: 200px;
+    height: 67px;
+    background: rgb(20, 1, 1);
+    background: linear-gradient( 347deg, rgb(61 59 62) 0%, rgb(108 109 113) 35%, rgb(57 55 56) 100%);
+    border-radius: 10px;
+    cursor: pointer;
+    color: #b4b8b9;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.page-container {
+    display: flex;
+    margin: 0px 20px;
+}
+
+.logo {
+    width: 100%;
+    margin-left: 100px;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-around;
+    background: #3e3c3f;
+    height: 85px;
+    align-items: center;
+}
+
+img.background {
+    margin: 0px;
+    width: 100%;
+    height: 100vh;
+}
+
+.paragraph-sectioned {
+    position: absolute;
+    top: 410px;
+}
+
+.main-page {
+    display: flex;
+}
+
+p.main-paragraph {
+    width: 50%;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 400px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+img.vodafone-image {
+    width: 1000px;
+    height: 500px;
+    margin: 0px auto;
+    border-radius: 4px;
+}
+
+input.more-button {
+    width: 200px;
+    height: 62px;
+    border-radius: 10px;
+    background: #e60000;
+    color: #fff;
+    font-size: 20px;
+    display: block;
+    margin: 0px auto;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    border: none;
+    cursor: pointer;
+}
+
+.more-button:hover {
+    background-color: #aa2020;
+}
+
+.menu-item {
+    font-size: 29px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.right-side {
+    position: relative;
+}
+
+span.shopping-cart-span {
+    background: #000000;
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    left: 32px;
+    font-size: 17px;
+    width: 22px;
+    height: 20px;
+    text-align: center;
+}
+
+i.fas.fa-shopping-cart.menu-shopping-cart {
+    color: white;
+    margin-right: 23px;
+}
+
+img.img-navbar {
+    width: 81px;
+    margin: 0;
+}
+
+.ux-nav {
+    display: flex;
+}
+
+.log-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a.menu-item.user-item {
+    margin-right: 26px;
+}
+
+img {
+    margin-top: 10px;
+    width: 180px;
+}
+
+.aside-info {
+    text-align: center;
+}
+
+span.final-price {
+    font-size: 20px;
+    color: #fe0201;
+    font-weight: bold;
+}
+
+.account-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin: 8px 0px;
+}
+
+.cart-box {
+    display: flex;
+    align-items: center;
+}
+
+a.shopping-cart {
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+    width: 145px;
+}
+
+.register {
+    margin-right: 25px;
+    background: #000000;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.log-in {
+    margin-right: 35px;
+    background: #000000;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    width: 71px;
+}
+
+.log-out {
+    margin-right: 35px;
+    background: #000000;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    width: 71px;
+}
+
+input.main-search {
+    height: 32px;
+    width: 280px;
+    border-radius: 5px;
+    border: 1px solid #230c22;
+}
+
+.delivery-info {
+    display: flex;
+    margin-right: 36px;
+    justify-content: flex-end;
+}
+
+.delivery {
+    display: flex;
+    padding-right: 30px;
+    font-size: 21px;
+    align-items: center;
+}
+
+.login-info {
+    display: flex;
+    font-size: 21px;
+    align-items: center;
+    position: relative;
+}
+
+.free-delivery {
+    padding-left: 11px;
+}
+
+i.fas.fa-truck-moving {
+    font-size: 30px;
+    color: #686767;
+}
+
+button.enter-account {
+    padding: 11px 40px;
+    font-size: 13px;
+    cursor: pointer;
+    background: #f6f6f6;
+}
+
+i.fas.fa-user-lock {
+    position: absolute;
+    padding-left: 8px;
+    color: #686767;
+}
+
+i.fas.fa-shopping-cart {
+    color: #686767;
+    font-size: 26px;
+    padding: 10px;
+}
+
+.payment-container {
+    margin-top: 30px;
+    padding: 35px 0px;
+    border-bottom: 2px solid black;
+    background: #d20502;
+}
+
+ul.payment-list {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+li.payment-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+}
+
+.pay-icon {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.phone-products {
+    list-style-type: none;
+}
+
+.gadget-options {
+    list-style-type: none;
+    width: 480px;
+}
+
+.items {
+    border: 1px solid #b6babb;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 132px;
+    padding-left: 13px;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a.element {
+    text-decoration: none;
+    color: white;
+}
+
+.products-list {
+    width: 50%;
+    margin-top: 60px;
+}
+
+i.fas.fa-chevron-right {
+    font-size: 13px;
+    position: absolute;
+    left: 405px;
+    top: 19px;
+}
+
+img.content-image {
+    width: 98%;
+    margin-top: 43px;
+}
+
+
+/* 
+.footer-container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    margin-top: 35px;
+} */
+
+.footer {
+    position: static;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #3e3c3f;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-paragraph {
+    font-size: 20px;
+}
+
+.search-button {
+    padding: 7px;
+}
+
+.search-input {
+    width: 321px;
+    height: 25px;
+    margin-top: 20px;
+}
+
+.discounted {
+    text-decoration: line-through;
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.filter-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.form {
+    padding-bottom: 21px;
+    margin-top: 10px;
+    width: 50%;
+}
+
+.btn {
+    margin-top: 20px;
+    background-color: red;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+}
+
+li.phone {
+    width: 350px;
+    display: inline-block;
+    margin: 25px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid red;
+    padding: 21px 0px;
+}
+
+img.star {
+    width: 25px;
+}
+
+p.rating {
+    font-size: 23px;
+    padding: 0px;
+}
+
+button.add-item {
+    padding: 16px 22px;
+    background: red;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 11px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+a.phone-name {
+    color: black;
+    text-decoration: none;
+}
+
+.phone-details {
+    margin-top: 100px;
+    margin-left: 100px;
+    margin-bottom: 30px;
+    height: 100%;
+    display: flex;
+}
+
+.details {
+    padding-left: 71px;
+    padding-top: 256px;
+}
+
+.phone-os {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+span.span-os {
+    font-size: 23px;
+}
+
+.product-price {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+span.span-price {
+    color: red;
+    font-size: 30px;
+}
+
+.availability {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 19px 0px;
+}
+
+span.span-availability {
+    font-size: 23px;
+}
+
+.rating {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 35px 0px;
+}
+
+.checkmark-icon {
+    font-size: 28px;
+    padding-right: 12px;
+    color: green;
+}
+
+.buy-button {
+    display: block;
+    margin-left: 240px;
+    width: 210px;
+    height: 55px;
+    background: #0342f2;
+    font-size: 24px;
+    color: #fff;
+    border: none;
+    border-radius: 16px;
+    text-align: right;
+    padding-right: 19px;
+    cursor: pointer;
+}
+
+.buy-box {
+    position: relative;
+}
+
+.shopping-cart {
+    position: absolute;
+    left: 260px;
+    bottom: 17px;
+    color: #fff;
+    font-size: 20px;
+}
+
+.login-page-wrapper {
+    display: flex;
+}
+
+.register-page-wrapper {
+    display: flex;
+}
+
+.image-container {
+    width: 50%;
+    /* margin: 100px 0px 0px 100px; */
+}
+
+img.vodafone-login-image {
+    width: 100%;
+}
+
+.login-container {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-container {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-container {
+    width: 50%;
+}
+
+.login-box {
+    width: 500px;
+    border: 1px solid black;
+    padding: 35px 129px;
+}
+
+.register-box {
+    width: 500px;
+    border: 1px solid black;
+    padding: 35px 129px;
+}
+
+h1.login-title {
+    text-align: center;
+}
+
+p.label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input.login-information {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #d0d0d0;
+    padding-left: 10px;
+}
+
+button.login-button {
+    width: 70%;
+    padding: 10px 0px;
+    background: red;
+    color: #fff;
+    font-size: 22px;
+    border: none;
+    margin: 0px auto;
+    display: block;
+    border-radius: 29px;
+    font-weight: bold;
+}
+
+.button-text {
+    text-align: right;
+    margin-top: 6px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+a.red {
+    color: red;
+    font-size: 20px;
+}
+
+.text-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h3.title {
+    font-size: 27px;
+    font-style: italic;
+    color: red;
+}
+
+p.subtitle {
+    align-self: flex-start;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+p.login-paragraph {
+    line-height: 35px;
+    font-size: 19px;
+    margin-right: 100px;
+}
+
+.form-field-login {
+    margin-bottom: 15px;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+
+.form-field {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.form-field small {
+    visibility: hidden;
+}
+
+.form-field.fail small {
+    visibility: visible;
+    color: #e74c3c;
+}
+
+.form-field.success input {
+    border: 2px solid #2ecc71;
+}
+
+.form-field.fail input {
+    border: 2px solid #e74c3c;
+}
+
+.form-field label {
+    display: inline-block;
+}
+
+.form-field i {
+    position: absolute;
+    top: 36px;
+    right: 3px;
+    visibility: hidden;
+}
+
+.form-field.success i.fa-check-circle {
+    color: #2ecc71;
+    visibility: visible;
+}
+
+.form-field.fail i.fa-exclamation-circle {
+    color: #e74c3c;
+    visibility: visible;
+}

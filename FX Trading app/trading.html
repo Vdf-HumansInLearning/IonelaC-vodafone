@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reseter.css/1.0.8/reseter.min.css" integrity="sha512-w7sMEM5yzmuVP9ic9zpCLk/+whwrrhkH5g83x0wi5DEPo1y+/JniMmCVfbtjw5JipFpcCb4gyF2xLES6tc+TxA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="page-container">
+        <nav class="nav-bar">
+            <img class="logo-image" src="https://raw.githubusercontent.com/WebToLearn/fx-trading-app/master/App/ui/src/assets/img/logo-main.svg" alt="">
+            <button type="button" class="logout-button">Logout</button>
+        </nav>
+        <div class="main-container">
+            <div class="trading-container">
+                <h2 class="main-title">FX Rates View</h2>
+                <div class="grid">
+                    <div class="exchange-container">
+                        <div class="currency">EUR <span class="curr">/RON <i class="fas fa-exchange-alt arrow-icon"></i></span></div>
+                        <button type="button" class="close-button">
+                            <i class="fas fa-times close-button"></i>
+                        </button>
+                        <div class="action">SELL: <span class="currency-to-sell">4.63 <i class="fas fa-sort-down arrow-down-icon"></i></span></div>
+                        <div class="action action-right">BUY: <span class="currency-to-buy">4.42 <i class="fas fa-sort-up arrow-up-icon"></i></span></div>
+                        <div class="amount-to-buy">Notional</div>
+                        <input type="number" class="amount" placeholder="1.000.000">
+                        <!-- <div class="time-of-trade">Tenor</div> -->
+                        <label for="currency-name">Tenor</label>
+
+                        <select name="currency-name" class="select" id="select-currency">
+                            <option value="please-select">Please select</option>
+                            <option value="eur">EUR</option>
+                            <option value="gbp">GBP</option>
+                            <option value="usd">USD</option>
+                            <option value="ron">RON</option>
+                        </select>
+                        <i class="fas fa-sort-down arrow-down-icon dropdown-icon"></i>
+
+                        <button type="button" class="btn btn-light sell-button">Sell</button>
+                        <button type="button" class="btn btn-light buy-button">Buy</button>
+                    </div>
+
+                    <div class="exchange-container">
+                        <div class="currency">GBP <span class="curr">/EUR <i class="fas fa-exchange-alt arrow-icon"></i></span></div>
+                        <button type="button" class="close-button">
+                            <i class="fas fa-times close-button"></i>
+                        </button>
+                        <div class="action">SELL: <span class="currency-to-sell">1.11 <i class="fas fa-sort-down arrow-down-icon"></i></span></div>
+                        <div class="action action-right">BUY: <span class="currency-to-buy">1.12 <i class="fas fa-sort-up arrow-up-icon"></i></span></div>
+                        <div class="amount-to-buy">Notional</div>
+                        <input type="number" class="amount" placeholder="">
+                        <label for="currency-name">Tenor</label>
+
+                        <select name="currency-name" class="select" id="select-currency">
+                            <option value="please-select">Please select</option>
+                            <option value="eur">EUR</option>
+                            <option value="gbp">GBP</option>
+                            <option value="usd">USD</option>
+                            <option value="ron">RON</option>
+                        </select>
+                        <i class="fas fa-sort-down arrow-down-icon dropdown-icon"></i>
+                        <button type="button" class="btn btn-light sell-button">Sell</button>
+                        <button type="button" class="btn btn-light buy-button">Buy</button>
+                    </div>
+
+                    <div class="exchange-container">
+                        <div class="currency">EUR <span class="curr">/USD <i class="fas fa-exchange-alt arrow-icon"></i></span></div>
+                        <button type="button" class="close-button">
+                            <i class="fas fa-times close-button"></i>
+                        </button>
+                        <div class="action">SELL: <span class="currency-to-sell">1.15 <i class="fas fa-sort-down arrow-down-icon"></i></span></div>
+                        <div class="action action-right">BUY: <span class="currency-to-buy">1.16 <i class="fas fa-sort-up arrow-up-icon"></i></span></div>
+                        <div class="amount-to-buy">Notional</div>
+                        <input type="number" class="amount" placeholder="">
+                        <label for="currency-name">Tenor</label>
+
+                        <select name="currency-name" class="select" id="select-currency">
+                            <option value="please-select">Please select</option>
+                            <option value="eur">EUR</option>
+                            <option value="gbp">GBP</option>
+                            <option value="usd">USD</option>
+                            <option value="ron">RON</option>
+                        </select>
+                        <i class="fas fa-sort-down arrow-down-icon dropdown-icon"></i>
+                        <button type="button" class="btn btn-light sell-button">Sell</button>
+                        <button type="button" class="btn btn-light buy-button">Buy</button>
+                    </div>
+
+                    <div class="exchange-container">
+                        <div class="currency">USD <span class="curr">/EUR <i class="fas fa-exchange-alt arrow-icon"></i></span></div>
+                        <button type="button" class="close-button">
+                            <i class="fas fa-times close-button"></i>
+                        </button>
+                        <div class="action">SELL: <span class="currency-to-sell">0.86 <i class="fas fa-sort-down arrow-down-icon"></i></span></div>
+                        <div class="action action-right">BUY: <span class="currency-to-buy">0.90 <i class="fas fa-sort-up arrow-up-icon"></i></span></div>
+                        <div class="amount-to-buy">Notional</div>
+                        <input type="number" class="amount" placeholder="">
+                        <!-- <div class="time-of-trade">Tenor</div> -->
+                        <label for="currency-name">Tenor</label>
+
+                        <select name="currency-name" class="select" id="select-currency">
+                            <option value="please-select">Please select</option>
+                            <option value="eur">EUR</option>
+                            <option value="gbp">GBP</option>
+                            <option value="usd">USD</option>
+                            <option value="ron">RON</option>
+                        </select>
+                        <i class="fas fa-sort-down arrow-down-icon dropdown-icon"></i>
+                        <button type="button" class="btn btn-light sell-button">Sell</button>
+                        <button type="button" class="btn btn-light buy-button">Buy</button>
+                    </div>
+
+                    <div class="exchange-container pick">
+                        <p class="currency-pick">Pick a currency</p>
+                        <button type="button" class="close-button">
+                            <i class="fas fa-times close-button"></i>
+                        </button>
+                        <label for="primary-pick">Primary</label>
+
+                        <select name="currency-name" class="select" id="select-currency">
+                            <option value="please-select">Please select</option>
+                            <option value="eur">EUR</option>
+                            <option value="gbp">GBP</option>
+                            <option value="usd">USD</option>
+                            <option value="ron">RON</option>
+                        </select>
+                        <i class="fas fa-sort-down arrow-down-icon dropdown-icon-primary"></i>
+                        <label for="secondary-pick">Seconday</label>
+
+                        <select name="currency-name" class="select" id="select-currency">
+                            <option value="please-select">Please select</option>
+                            <option value="eur">EUR</option>
+                            <option value="gbp">GBP</option>
+                            <option value="usd">USD</option>
+                            <option value="ron">RON</option>
+                        </select>
+                        <i class="fas fa-sort-down arrow-down-icon dropdown-icon-secondary"></i>
+                        <button type="button" class="btn btn-light ok-button">OK</button>
+                    </div>
+
+                    <div class="exchange-container more">
+                        <i class="fas fa-plus plus-sign"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="table-container">
+                <h2 class="main-title">Blotter View</h2>
+                <hr class="grey-line">
+                <div class="filter-box">
+                    <h3 class="filters">Filters</h3>
+                    <p class="pair">CCY Pair</p>
+                    <div class="pair-select-box">
+                        <select name="currency-name" class="pair-select">
+                        <option value="please-select">Please select</option>
+                        <option value="eur">EUR</option>
+                        <option value="gbp">GBP</option>
+                        <option value="usd">USD</option>
+                        <option value="ron">RON</option>
+                    </select>
+                    </div>
+                    <i class="fas fa-sort-down arrow-down-icon dropdown-icon-select"></i>
+                    <p class="date">Date</p>
+                    <input type="date" class="calendar">
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr class="blue-color">
+                            <th scope="col">ID</th>
+                            <th scope="col">Username <i class="fas fa-sort"></i></th>
+                            <th scope="col">CCY Pair <i class="fas fa-sort"></i></th>
+                            <th scope="col">Rate <i class="fas fa-sort"></i></th>
+                            <th scope="col">Action <i class="fas fa-sort"></i></th>
+                            <th scope="col">Notional <i class="fas fa-sort"></i></th>
+                            <th scope="col">Tenor <i class="fas fa-sort"></i></th>
+                            <th scope="col">Transaction Date <i class="fas fa-sort"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="odd">
+                            <th scope="row">1</th>
+                            <td>George Popescu</td>
+                            <td>USD/EUR</td>
+                            <td>0.86</td>
+                            <td>SELL</td>
+                            <td>1,000,000.00</td>
+                            <td>1M</td>
+                            <td>12/08/2018 12:22</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Radu Mihaila</td>
+                            <td>RON/EUR</td>
+                            <td>0.28</td>
+                            <td>SELL</td>
+                            <td>2,500,000.00</td>
+                            <td>Spot</td>
+                            <td>12/08/2018 15:45</td>
+                        </tr>
+                        <tr class="odd">
+                            <th scope="row">3</th>
+                            <td>Anca Marinescu</td>
+                            <td>EUR/USD</td>
+                            <td>1.15</td>
+                            <td>SELL</td>
+                            <td>5,000.00</td>
+                            <td>3M</td>
+                            <td>12/08/2018 12:27</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>George Popescu</td>
+                            <td>EUR/GBP</td>
+                            <td>0.90</td>
+                            <td>BUY</td>
+                            <td>1,000,000.00</td>
+                            <td>1M</td>
+                            <td>12/08/2018 12:22</td>
+                        </tr>
+                        <tr class="odd">
+                            <th scope="row" class="odd">5</th>
+                            <td>Radu Mihaila</td>
+                            <td>GBP/EUR</td>
+                            <td>1.11</td>
+                            <td>SELL</td>
+                            <td>2,500,000.00</td>
+                            <td>Spot</td>
+                            <td>12/08/2018 15:45</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">6</th>
+                            <td>Anca Marinescu</td>
+                            <td>EUR/RON</td>
+                            <td>4.63</td>
+                            <td>SELL</td>
+                            <td>5,000.00</td>
+                            <td>3M</td>
+                            <td>12/08/2018 12:27</td>
+                        </tr>
+                        <tr class="odd">
+                            <th scope="row">7</th>
+                            <td>George Popescu</td>
+                            <td>USD/EUR</td>
+                            <td>0.90</td>
+                            <td>SELL</td>
+                            <td>1,000,000.00</td>
+                            <td>1M</td>
+                            <td>12/08/2018 12:22</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">8</th>
+                            <td>Radu Mihaila</td>
+                            <td>EUR/GBP</td>
+                            <td>0.89</td>
+                            <td>SELL</td>
+                            <td>2,500,000.00</td>
+                            <td>Spot</td>
+                            <td>12/08/2018 15:45</td>
+                        </tr>
+                        <tr class="odd">
+                            <th scope="row">9</th>
+                            <td>Anca Marinescu</td>
+                            <td>EUR/RON</td>
+                            <td>4.42</td>
+                            <td>BUY</td>
+                            <td>5,000,000.00</td>
+                            <td>3M</td>
+                            <td>12/08/2018 12:27</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">10</th>
+                            <td>George Popescu</td>
+                            <td>EUR/GBP</td>
+                            <td>0.91</td>
+                            <td>SELL</td>
+                            <td>100.00</td>
+                            <td>1M</td>
+                            <td>12/08/2018 12:22</td>
+                        </tr>
+                        <tr class="odd">
+                            <th scope="row">11</th>
+                            <td>Radu Mihaila</td>
+                            <td>RON/EUR</td>
+                            <td>0.22</td>
+                            <td>BUY</td>
+                            <td>2,500,000.00</td>
+                            <td>Spot</td>
+                            <td>12/08/2018 15:45</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">12</th>
+                            <td>Anca Marinescu</td>
+                            <td>EUR/USD</td>
+                            <td>1.16</td>
+                            <td>BUY</td>
+                            <td>5,000,000.00</td>
+                            <td>3M</td>
+                            <td>12/08/2018 12:27</td>
+                        </tr>
+                        <tr class="odd">
+                            <th scope="row">13</th>
+                            <td>George Popescu</td>
+                            <td>USD/EUR</td>
+                            <td>0.87</td>
+                            <td>SELL</td>
+                            <td>1,000,000.00</td>
+                            <td>1M</td>
+                            <td>12/08/2018 12:22</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">14</th>
+                            <td>Radu Mihaila</td>
+                            <td>RON/EUR</td>
+                            <td>0.29</td>
+                            <td>SELL</td>
+                            <td>2,500.00</td>
+                            <td>Spot</td>
+                            <td>12/08/2018 15:45</td>
+                        </tr>
+                        <tr class="odd">
+                            <th scope="row">15</th>
+                            <td>Anca Marinescu</td>
+                            <td>EUR/USD</td>
+                            <td>4.60</td>
+                            <td>SELL</td>
+                            <td>5,000,000.00</td>
+                            <td>3M</td>
+                            <td>12/08/2018 12:27</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">16</th>
+                            <td>George Popescu</td>
+                            <td>GBP/EUR</td>
+                            <td>1.12</td>
+                            <td>BUY</td>
+                            <td>1,000,000.00</td>
+                            <td>1M</td>
+                            <td>12/08/2018 12:22</td>
+                        </tr>
+                        <tr class="odd">
+                            <th scope="row">17</th>
+                            <td>Radu Mihaila</td>
+                            <td>RON/EUR</td>
+                            <td>0.31</td>
+                            <td>SELL</td>
+                            <td>2,500,000.00</td>
+                            <td>Spot</td>
+                            <td>12/08/2018 15:45</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">18</th>
+                            <td>Anca Marinescu</td>
+                            <td>EUR/RON</td>
+                            <td>4.50</td>
+                            <td>BUY</td>
+                            <td>5,000,000.00</td>
+                            <td>3M</td>
+                            <td>12/08/2018 12:27</td>
+                        </tr>
+                        <tr class="odd">
+                            <th scope="row">19</th>
+                            <td>George Popescu</td>
+                            <td>USD/EUR</td>
+                            <td>0.98</td>
+                            <td>BUY</td>
+                            <td>1,000,000.00</td>
+                            <td>1M</td>
+                            <td>12/08/2018 12:22</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">20</th>
+                            <td>Radu Mihaila</td>
+                            <td>EUR/GBP</td>
+                            <td>0.87</td>
+                            <td>SELL</td>
+                            <td>2,500,000.00</td>
+                            <td>Spot</td>
+                            <td>12/08/2018 15:45</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

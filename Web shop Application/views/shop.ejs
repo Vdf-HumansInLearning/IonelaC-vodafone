@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/_head'); %>
+    <%- include('./partials/_navbar'); %>
+
+        <title>
+            <%= title %>
+        </title>
+
+        <body>
+
+            <div class="page-container">
+
+                <div class="forms">
+                    <form action="/shop">
+                        <div class="search-container">
+                            <input type="text" class="search-input" name="searchedBrand[]" value="<%= brands[i] %>" placeholder="Search brand...">
+                            <button type="submit" class="search-button">Search</button>
+                        </div>
+                    </form>
+
+                    <form action="/shop" class="form">
+
+                        <div id="filter-brand">
+                            <p class="filter-title">Choose brand</p>
+                            <% for(var i=0; i < brands.length; i++) {%>
+                                <div class="multi-option-filter">
+                                    <input type="checkbox" class="choose-brand" name="brand[]" value="<%= brands[i] %>">
+                                    <%= brands[i] %>
+                                </div>
+                                <% } %>
+                        </div>
+
+                        <div id="filter-price">
+                            <p class="filter-title">Choose price</p>
+                            <div>
+
+                                <label for="min"> Min
+                <input type="number" id="min" name="minPrice" value="" class="select-price" placeholder="$">
+                 </label>
+                            </div>
+                            <div>
+
+                                <label for="max"> Max
+                <input type="number" id="max" name="maxPrice" value="" class="select-price" placeholder="$">
+                 </label>
+                            </div>
+                        </div>
+
+                        <div id="filter-os">
+                            <p class="filter-title">Choose operating system</p>
+                            <% for(var i=0; i < os.length; i++) {%>
+                                <div class="multi-option-filter">
+                                    <input type="checkbox" class="choose-os" name="os[]" value="<%= os[i] %>">
+                                    <%= os[i] %>
+                                        <!-- <div> -->
+                                        <% } %>
+                                </div>
+                        </div>
+                        <button type="submit" class="filter-button btn">Filter</button>
+                        <button type="reset" class="reset-button btn">Reset</button>
+                    </form>
+                </div>
+            </div>
+            <div id="container-products">
+                <ul class="phone-products">
+
+                    <% for(var i=0; i < phones.length; i++) {%>
+
+                        <li class="phone">
+                            <h2>
+                                <a href="/shop?phone=<%= phones[i].brand %>" target="_blank" class="phone-name">
+                                    <%= phones[i].brand %>
+                                        <%= phones[i].name %>
+
+
+                            </h2>
+                            <img class="phone-image" src="/images/<%= phones[i].brand %>.jpg" alt="phone image">
+                            </a>
+                            <p>
+                                <% if(phones[i].discount > 0) { %>
+                                    <span class="discounted"> $ <%= phones[i].price %></span> &nbsp;
+                                    <span class="final-price"><%= phones[i].price - phones[i].discount %> </span>
+                                    <%} else { %>
+                                        <p> $
+                                            <%= phones[i].price %>
+                                                <% }%>
+                                        </p>
+                            </p>
+
+                            <% if(phones[i].rating > 0) { %>
+
+                                <p class="rating">
+                                    <%= phones[i].rating %> <img class="star" src="/images/star.jpg" alt="star image">
+                                </p>
+                                <%} else { %>
+                                    <p class="rating">- <img class="star" src="/images/star.jpg" alt="star image"></p> %>
+
+                                    <% } %>
+                                        <button type="button" class="add-item" data-id="<%= phones[i].id %>">Add to cart</button>
+
+                        </li>
+
+
+                        <% } %>
+
+                </ul>
+
+
+            </div>
+            </div>
+
+
+            <%- include('./partials/_footer.ejs'); %>
+                <script>
+                    let resetButton = document.querySelector(".reset-button");
+
+                    resetButton.addEventListener("click", function() {
+                        document.querySelectorAll('.multi-option-filter > input').forEach(item => item.checked = false);
+
+                    })
+                </script>
+                <script src="/javascripts/script.js"></script>
+                <script src="/javascripts/cart.js"></script>
+        </body>
+
+</html>

@@ -1,0 +1,305 @@
+:root {
+    --green: #75D8A6;
+    --blue: #3496F0;
+    --grey: #7C7C7C;
+    --light-light-grey: #F2F2F2;
+    --light-grey: #DDDDDD;
+    --dark-grey: #373A3C;
+    --orange: #F0AD4E;
+    --red: #D9534F;
+}
+
+html {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.nav-bar {
+    width: 100%;
+    height: 70px;
+    border: 1px solid var(--light-grey);
+    margin: 2px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo-image {
+    width: 90px;
+    margin-left: 40px;
+}
+
+.logout-button {
+    padding: 0px;
+    height: 40px;
+    width: 85px;
+    align-self: center;
+    margin-right: 40px;
+    border: 1px solid var(--light-grey);
+}
+
+.main-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.trading-container {
+    width: 50%;
+    margin-left: 50px;
+    margin-right: 25px;
+}
+
+.table-container {
+    width: 50%;
+    margin-left: 25px;
+    margin-right: 50px;
+}
+
+.grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 33% 33% 33%;
+}
+
+h2.main-title {
+    font-size: 20px;
+    margin: 33px 0px;
+    color: var(--grey);
+}
+
+.exchange-container {
+    border: 1px solid var(--light-grey);
+    margin: 20px;
+    width: 360px;
+    height: 245px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: repeat(5, 1fr);
+    align-items: center;
+    padding: 7px 0px;
+    position: relative;
+    row-gap: 12px;
+}
+
+.currency {
+    padding-left: 7px;
+    font-size: 20px;
+    color: var(--dark-grey);
+    font-weight: bold;
+}
+
+.curr {
+    font-size: 16px;
+    color: var(--grey);
+}
+
+.arrow-icon {
+    color: var(--orange);
+}
+
+.close-button {
+    border: none;
+    color: var(--grey);
+    text-align: right;
+    font-size: 14px;
+    padding-right: 7px;
+}
+
+.action {
+    background-color: var(--light-light-grey);
+    padding-left: 7px;
+    font-size: 16px;
+    color: var(--grey);
+    font-weight: bold;
+    padding: 6px 7px;
+}
+
+.currency-to-sell {
+    font-size: 20px;
+    color: var(--dark-grey);
+    position: relative;
+}
+
+.arrow-down-icon {
+    position: absolute;
+    top: 2px;
+    color: var(--red);
+}
+
+.action-right {
+    text-align: right;
+    padding-right: 20px;
+    position: relative;
+}
+
+.currency-to-buy {
+    font-size: 20px;
+    color: var(--dark-grey);
+}
+
+.arrow-up-icon {
+    position: absolute;
+    top: 19px;
+    color: var(--green);
+}
+
+.amount-to-buy {
+    padding-left: 7px;
+    color: var(--grey);
+}
+
+input.amount {
+    border: 1px solid var(--light-light-grey);
+    margin-right: 7px;
+}
+
+label {
+    padding-left: 7px;
+    color: var(--grey);
+}
+
+.select {
+    border: 1px solid var(--light-light-grey);
+    color: var(--grey);
+    margin-right: 7px;
+}
+
+.sell-button {
+    width: 80px;
+    margin-left: 7px;
+    height: 35px;
+    background-color: var(--green);
+    color: white;
+}
+
+.buy-button {
+    width: 80px;
+    margin-right: 7px;
+    height: 35px;
+    background-color: var(--green);
+    float: right;
+    color: white;
+    justify-self: end;
+    background-color: var(--blue);
+    position: relative;
+}
+
+.dropdown-icon {
+    position: absolute;
+    top: 163px;
+    left: 326px;
+    color: var(--dark-grey);
+    font-size: 13px;
+}
+
+.more {
+    display: flex;
+    justify-content: center;
+}
+
+.plus-sign {
+    font-size: 110px;
+    color: var(--light-grey);
+}
+
+.filter-box {
+    display: flex;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.filters {
+    padding-right: 20px;
+    border-right: 1px solid var(--light-light-grey);
+    font-size: 16px;
+    color: var(--grey);
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0;
+    padding-top: 4px;
+}
+
+.grey-line {
+    color: var(--light-grey);
+}
+
+p.pair {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: var(--grey);
+    margin: 0px;
+    padding-top: 4px;
+}
+
+select.pair-select {
+    width: 150px;
+    padding-left: 10px;
+    color: var(--grey);
+    border: 1px solid var(--light-light-grey)
+}
+
+.date {
+    padding-left: 20px;
+    padding-right: 10px;
+    color: var(--grey);
+    margin: 0px;
+    padding-top: 4px;
+}
+
+.calendar {
+    height: 35px;
+    color: var(--grey);
+    border: 1px solid var(--light-light-grey)
+}
+
+.dropdown-icon-select {
+    left: 282px;
+    top: 9px;
+    color: var(--dark-grey);
+    font-size: 13px;
+}
+
+tr.odd {
+    background: var(--light-light-grey);
+}
+
+.blue-color {
+    background-color: var(--blue);
+    color: white;
+    border: none;
+}
+
+.currency-pick {
+    font-size: 16px;
+    color: var(--grey);
+    font-weight: bold;
+    padding-left: 7px;
+    margin-top: 6px;
+}
+
+.ok-button {
+    grid-column: 2/3;
+    grid-row: 4/5;
+    background-color: var(--blue);
+    width: 80px;
+    height: 35px;
+    justify-self: end;
+    margin-right: 7px;
+    color: #fff;
+}
+
+.dropdown-icon-secondary {
+    position: absolute;
+    top: 119px;
+    left: 326px;
+    font-size: 13px;
+    color: var(--dark-grey);
+}
+
+.dropdown-icon-primary {
+    position: absolute;
+    top: 73px;
+    left: 326px;
+    font-size: 13px;
+    color: var(--dark-grey);
+}

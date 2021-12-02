@@ -1,0 +1,33 @@
+<div class="login-page-wrapper">
+    <div class="login-container">
+        <form class="login-box" id="login-form" action="/login">
+            <h1 class="login-title">
+                <%= loginTitle %>
+            </h1>
+            <div class="error-message"></div>
+            <div class="form-field-login">
+                <p class="label">USERNAME</p>
+                <input type="text" id="username" class="login-information" placeholder="username" name="username">
+            </div>
+            <div class="form-field-login">
+                <p class="label">EMAIL</p>
+                <input type="email" id="email" class="login-information" placeholder="email" name="email">
+            </div>
+            <div class="form-field-login">
+                <p class="label">PASSWORD</p>
+                <input type="password" id="password" class="login-information" placeholder="password" name="password">
+            </div>
+            <button type="submit" class="login-button">Login</button>
+            <div class="button-text">You don't have an account yet?
+                <span><a class="red" href="register">Register</a></span>
+            </div>
+        </form>
+    </div>
+    <div class="text-container">
+        <h3 class="title">Not registred yet with us?</h3>
+        <p class="subtitle">There are a lot of reasons to register with Vodafone</p>
+        <p class="login-paragraph">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            <br> It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. <br> It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
+            recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+</div>

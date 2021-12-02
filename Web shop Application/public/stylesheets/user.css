@@ -1,0 +1,61 @@
+body {
+    position: relative;
+}
+
+button.more-info-user-button {
+    margin-right: 20px;
+}
+
+.additional-info {
+    width: 630px;
+    height: 372px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 278px;
+    left: 36%;
+    background: #ecebec;
+}
+
+.label {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+input.info {
+    padding: 0px 20px;
+    width: 300px;
+    border: none;
+    background: #ecebec;
+}
+
+.info-field {
+    margin: 7px;
+}
+
+.close-button {
+    background: black;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 8px;
+    margin-top: 20px;
+    padding: 0px 40px;
+}
+
+
+/* .hidden-class {
+    display: none;
+} */
+
+
+/* .additional-info.hidden-class {
+    
+} */
+
+
+/* .info {
+    display: none;
+} */

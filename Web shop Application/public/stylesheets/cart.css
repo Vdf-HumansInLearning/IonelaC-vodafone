@@ -1,0 +1,84 @@
+.products-container {
+    max-width: 900px;
+    justify-content: space-around;
+    margin: 0px auto;
+}
+
+.product-header {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 4px solid rgb(59, 59, 59);
+    margin: 0px auto;
+    padding-top: 65px;
+}
+
+h5 {
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.product-title {
+    width: 35%;
+    font-size: 25px;
+}
+
+.price {
+    width: 25%;
+    display: flex;
+    border-bottom: 1px solid rgb(59, 59, 59);
+    align-items: center;
+    font-size: 25px;
+}
+
+.quantity {
+    width: 30%;
+    display: flex;
+    border-bottom: 1px solid rgb(59, 59, 59);
+    align-items: center;
+    font-size: 25px;
+}
+
+.total {
+    width: 10%;
+    display: flex;
+    border-bottom: 1px solid rgb(59, 59, 59);
+    align-items: center;
+    font-size: 25px;
+}
+
+.product {
+    width: 35%;
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    padding: 10px 0px;
+    border-bottom: 1px solid rgb(59, 59, 59);
+}
+
+.products {
+    width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px auto;
+}
+
+.products i.fas.fa-times-circle {
+    font-size: 25px;
+    color: red;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.cart-images {
+    width: 85px;
+}
+
+.cartTotalContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+}
