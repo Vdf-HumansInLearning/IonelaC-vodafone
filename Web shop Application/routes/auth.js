@@ -3,18 +3,15 @@ const axios = require('axios').default;
 var router = express.Router();
 var fs = require('fs');
 var path = require('path')
-const filePath = "../users.json";
 
+let rawdata = fs.readFileSync(path.resolve(__dirname, '../users.json'));
 
-console.log(filePath)
-
-let isAdmin = false;
-let isLoggedIn = false;
-
+let users = JSON.parse(rawdata);
+console.log(users);
 // Get REGISTER page 
-router.get('/register', function(req, res, next) {
-    res.render('register', { title: "register", registerTitle: "Register" });
-});
+// router.get('/register', function(req, res, next) {
+//     res.render('register', { title: "register", registerTitle: "Register" });
+// });
 
 
 // Get LOGIN page
@@ -23,90 +20,44 @@ router.get('/login', function(req, res, next) {
 });
 
 
-// POST LOGIN page --doesn't work yet
-router.post("/register", function(req, res, next) {
-    if (req.body.fname && req.body.lname && req.body.username && req.body.email && req.body.password && req.body.confirm_password) {
-        let user = {
-            firstName: req.body.fname,
-            lastName: req.body.lname,
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password,
-            confirmPassword: req.body.confirm_password,
-            isAdmin: false,
-        };
-
-    }
-})
-
-
-// axios.post('../users.json')
-//     .then(function(response) {
-//         response.json()
-//     })
-//     .then(function(data) {
-//         console.log(data)
-//     })
-//     .catch(error => console.log(error));
-
-
-
-// router.post('/register', function(req, res, next) {
-//     res.send('POST request to the homepage')
-
-// });
-
 router.get('/register', function(req, res, next) {
 
+    res.render('register', { title: "register", registerTitle: "Register" });
     // obtain the users from an API call
-    axios.get('http://jsonplaceholder.typicode.com/users')
-        .then(function(response) {
-            console.log(response)
-            res.render('register', { title: "register", registerTitle: "Register" });
-        })
-        .catch(function(error) {
-            console.log(error);
-        })
-        .then(function() {
-            // always executed
-        });
 });
 
 
-// router.get('/register', function(req, res, next) {
-//     let registered = false;
-//     if (req.cookies.user_role && req.cookies.user_id) {
-//         registered = true;
-//     }
-//     res.render('register', {
-//         registerTitle: 'Register',
-//         registered: registered
-//     });
-// });
+router.post('/register', function(req, res, next) {
 
-// router.post('/register', function(req, res, next) {
+    let fname = req.body.fname;
+    let lname = req.body.lname;
+    let username = req.body.username;
+    let email = req.body.email;
+    let password = req.body.password;
+    let confirmPassword = req.body.confirm_password;
 
-//     axios.post(`http://localhost:3001/users/register`, {
-//             name: req.body.fname + " " + req.body.lname,
-//             username: req.body.username,
-//             email: req.body.email,
-//             password: req.body.password
-//         }, {
-//             "headers": {
-//                 "content-type": "application/json",
-//             }
-//         })
-//         .then(function(response) {
-//             // handle success
-//             res.send("Successfully registered");
-//         })
-//         .catch(function(error) {
-//             // handle error
-//             console.log(error);
-//             res.send(error);
-//         });
+    if (password === confirmPassword) {
+        users.push({
+            "id": users.length + 1,
+            "name": fname + " " + lname,
+            "username": username,
+            "email": email,
+            "password": password
+        })
+        console.log('pushed')
+    } else {
+        console.log("error")
+    }
 
-// });
+    fs.writeFile("users.json", JSON.stringify(users), function(error) {
+        if (error) {
+            console.log(error)
+        } else {
+            console.log("registered")
+        }
+    });
+
+});
 
 // router.get('/logout', function(req, res, next) {
 //     res.clearCookie('user_id');
