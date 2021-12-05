@@ -59,10 +59,5 @@ router.post('/register', function(req, res, next) {
 
 });
 
-// router.get('/logout', function(req, res, next) {
-//     res.clearCookie('user_id');
-//     res.clearCookie('user_role');
-//     res.render("logout", {});
-// });
 
 module.exports = router;
