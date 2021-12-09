@@ -1,61 +1,76 @@
 var express = require('express');
 const axios = require('axios').default;
 var router = express.Router();
-var fs = require('fs');
-var path = require('path')
 
-let rawdata = fs.readFileSync(path.resolve(__dirname, '../users.json'));
-
-let users = JSON.parse(rawdata);
-console.log(users);
 // Get REGISTER page 
-// router.get('/register', function(req, res, next) {
-//     res.render('register', { title: "register", registerTitle: "Register" });
-// });
+router.get('/register', function(req, res, next) {
+    res.render('register', { title: "register", registerTitle: "Register" });
+});
 
 
 // Get LOGIN page
 router.get('/login', function(req, res, next) {
-    res.render('login', { title: "login", loginTitle: "Account login" });
+    let loggedIn = false;
+    if (req.cookies.user_id) {
+        loggedIn = true;
+    }
+    res.render('login', { title: "login", loginTitle: "Account login", loggedIn: loggedIn });
 });
 
+router.post('/login', function(req, res, next) {
 
-router.get('/register', function(req, res, next) {
+    console.log(req.body);
+    axios.post(`http://localhost:3001/auth/login`, {
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password
+        }, {
+            "headers": {
+                "content-type": "application/json",
+            }
+        })
+        .then(function(response) {
+            console.log(response)
+                // handle success 
+            const user = response.data;
+            console.log(user);
+            if (user) {
+                res.cookie('user_id', user.id).send('cookie set');
+                // res.status(200).json({ 'msg': 'ok' })
+            } else {
+                res.clearCookie('user_id');
+                res.send('cookie user cleared');
+            }
 
-    res.render('register', { title: "register", registerTitle: "Register" });
-    // obtain the users from an API call
+        })
+        .catch(function(error) {
+            // handle error
+            console.log(error);
+        });
+
 });
+
 
 
 router.post('/register', function(req, res, next) {
+    axios.post(`http://localhost:3001/auth/register`, {
+            data: req.body
+        }, {
+            "headers": {
+                "content-type": "application/json",
+            }
 
-    let fname = req.body.fname;
-    let lname = req.body.lname;
-    let username = req.body.username;
-    let email = req.body.email;
-    let password = req.body.password;
-    let confirmPassword = req.body.confirm_password;
-
-    if (password === confirmPassword) {
-        users.push({
-            "id": users.length + 1,
-            "name": fname + " " + lname,
-            "username": username,
-            "email": email,
-            "password": password
         })
-        console.log('pushed')
-    } else {
-        console.log("error")
-    }
-
-    fs.writeFile("users.json", JSON.stringify(users), function(error) {
-        if (error) {
-            console.log(error)
-        } else {
-            console.log("registered")
-        }
-    });
+        .then(function(res) {
+            // handle success
+            // if (res.status !== 400) {
+            res.send("Successfully registered");
+            // }
+        })
+        .catch(function(error) {
+            console.log(error);
+        })
+    res.redirect('http://localhost:2000/auth/login')
 
 });
 

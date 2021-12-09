@@ -64,6 +64,7 @@ function checkInputs() {
 }
 
 function setErrorFor(input, message) {
+    // event.preventDefault();
     const formField = input.parentElement;
     const small = formField.querySelector('small');
     small.innerText = message;
@@ -83,12 +84,11 @@ function isEmail(email) {
 
 
 form.addEventListener("submit", function(event) {
-    event.preventDefault();
+    // event.preventDefault();
     checkInputs();
-
-    location.replace("http://localhost:3000/auth/login");
-
-    alert("User successfully registered. Please log in!")
-
-
+    alert("User successfully registered. Please log in!");
+    // if (checkInputs) {
+    //     alert("User successfully registered. Please log in!");
+    // }
+    // window.location.href = "http://localhost:2000/auth/login";
 })

@@ -9,18 +9,18 @@ router.get('/', function(req, res, next) {
     axios.get('http://localhost:3001/users')
         .then(function(response) {
 
-            let users = response.data
-                .filter(item => {
-                    if (req.query.username) {
-                        return !req.query.username.includes(item.username)
-                    }
-                    return true;
-                });
+            let users = response.data;
+            // .filter(item => {
+            //     if (req.query.username) {
+            //         return !req.query.username.includes(item.username)
+            //     }
+            //     return true;
+            // });
 
 
             let moreInfoUsers = response.data.filter(item => {
-                if (req.query.id) {
-                    return req.query.id.includes(item.id)
+                if (req.query.username) {
+                    return req.query.username.includes(item.username)
                 }
             });
 
@@ -33,6 +33,16 @@ router.get('/', function(req, res, next) {
             // always executed
         });
 });
+
+router.delete('/:id', function(req, res) {
+    axios.delete(`http://localhost:3001/users/${req.params.id}`, { data: req.params.id }).then()
+
+    res.send(`Deleting user ${req.params.id}`);
+});
+
+// const element = document.querySelector('.close-button');
+// axios.delete('http://localhost:3001/users')
+//     .then(() => element.innerHTML = 'Delete successful');
 
 
 module.exports = router;

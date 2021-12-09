@@ -5,20 +5,17 @@ let password = document.getElementById("password")
 let error = document.querySelector('.error-message');
 form.addEventListener("submit", function(event) {
     let messages = [];
-    let isLoggedin = false;
 
-    fetch("../users.json")
-        .then(response => response.json())
-        .then(response => response.forEach(el => {
-            if (el.username === username.value && el.email === email.value && el.password === password.value) {
-                location.replace("http://localhost:3000");
-                alert(`Successfully logged in. Welcome in your account, ${el.username}!`)
-                isLoggedin = true;
-            }
+    // fetch("../users.json")
+    //     .then(response => response.json())
+    //     .then(response => response.forEach(el => {
+    //         if (el.username === username.value && el.email === email.value && el.password === password.value) {
+    //             location.replace("http://localhost:2000");
+    //             alert(`Successfully logged in. Welcome in your account, ${el.username}!`)
 
-        }))
-
-    .catch(err => console.log(err))
+    //         }
+    //     }))
+    // .catch(err => console.log(err))
     if (username.value === '' || username.value == null) {
         messages.push('Username is required')
     }
@@ -35,8 +32,8 @@ form.addEventListener("submit", function(event) {
         error.innerText = messages.join(', ')
     }
 
-    if (isLoggedin === true) {
-        document.querySelector(".log-in").style.visibility = "hidden";
-    }
+    // if (isLoggedin === true) {
+    //     document.querySelector(".log-in").style.visibility = "hidden";
+    // }
 
 })

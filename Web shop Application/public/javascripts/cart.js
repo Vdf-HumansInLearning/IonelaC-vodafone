@@ -1,4 +1,4 @@
-const carts = Array.from(document.querySelectorAll(".add-item"));
+const carts = document.querySelectorAll(".add-item");
 
 fetch("../products.json")
     .then(response => response.json())
@@ -13,6 +13,7 @@ fetch("../products.json")
 function getProducts(data) {
     for (let i = 0; i < carts.length; i++) {
         carts[i].addEventListener("click", function() {
+            console.log("clicked");
             cartNumbers(data[i]);
             totalCost(data[i]);
         })
@@ -108,9 +109,9 @@ function displayCart() {
                 </div>
                 <div class="price">$${item.price - item.discount}</div>
                 <div class="quantity">
-                    <i class="fas fa-minus-circle"></i>
+                    
                     <span>${item.inCart}</span>
-                    <i class="fas fa-plus-circle"></i>
+                    
                 </div>
                 <div class="total">$${item.inCart * (item.price - item.discount)}</div>
             `
