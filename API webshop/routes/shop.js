@@ -2,6 +2,7 @@ const { response } = require('express')
 var express = require('express');
 const fs = require('fs');
 var router = express.Router();
+const path = require('path');
 
 
 router.get('/', function(req, res, next) {

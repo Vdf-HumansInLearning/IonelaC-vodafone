@@ -226,7 +226,7 @@ function renderFooter() {
 }
 
 // CREATE FOOTER FROM DETAILS PAGE
-function detailsFooter(article) {
+function detailsFooter(article, artLength) {
     console.log(article)
     const footer = document.createElement('footer');
     footer.setAttribute('class', 'footer');
@@ -242,12 +242,12 @@ function detailsFooter(article) {
 
     if (location.hash.includes('#/article1')) {
         previousButton.style.visibility = 'hidden';
-    } else if (location.hash.includes(`#/article4`)) {
+    } else if (location.hash.includes(`#/article` + artLength)) {
         nextButton.style.visibility = 'hidden';
     }
 
     nextButton.addEventListener('click', function() {
-        if (article.id >= 1) {
+        if (article.id >= 1 && article.id < artLength) {
             // changing the route to the next article
             location.hash = '#/article' + (article.id + 1);
             // reloading page
@@ -256,7 +256,7 @@ function detailsFooter(article) {
     })
 
     previousButton.addEventListener("click", function() {
-        if (article.id <= 4) {
+        if (article.id <= artLength) {
             // changing the route to the previous article
             location.hash = '#/article' + (article.id - 1);
             // reload the page
@@ -271,10 +271,10 @@ function detailsFooter(article) {
 }
 
 // RENDERING FOOTER FROM DETAILS PAGE
-function renderDetailsFooter(article) {
-    const domFooter = detailsFooter(article);
+function renderDetailsFooter(article, artLength) {
+    const domFooter = detailsFooter(article, artLength);
     root.appendChild(domFooter);
-    detailsFooter(article);
+    detailsFooter(article, artLength);
 }
 
 // CREATING ONE DETAILED ARTICLE
@@ -363,7 +363,7 @@ function renderAllArticlesDetails(articles) {
         if (location.hash.includes(item.id)) {
             renderNavBar(nav);
             renderSingleArticleDetails(item);
-            renderDetailsFooter(item);
+            renderDetailsFooter(item, articles.length);
         }
     });
 }
@@ -388,35 +388,42 @@ function createModal() {
     const input1 = document.createElement('input');
     input1.setAttribute('type', 'text');
     input1.setAttribute('class', 'input margin');
+    input1.setAttribute('id', 'title')
     input1.setAttribute('placeholder', 'Please enter title');
 
     const input2 = document.createElement('input');
     input2.setAttribute('type', 'text');
     input2.setAttribute('class', 'input');
+    input2.setAttribute('id', 'tag')
     input2.setAttribute('placeholder', 'Please enter tag');
 
     const input3 = document.createElement('input');
     input3.setAttribute('type', 'text');
     input3.setAttribute('class', 'input margin');
+    input3.setAttribute('id', 'author')
     input3.setAttribute('placeholder', 'Please enter author');
 
     const input4 = document.createElement('input');
     input4.setAttribute('type', 'text');
     input4.setAttribute('class', 'input');
+    input4.setAttribute('id', 'date')
     input4.setAttribute('placeholder', 'Please enter date');
 
     const input5 = document.createElement('input');
     input5.setAttribute('type', 'text');
     input5.setAttribute('class', 'input margin');
+    input5.setAttribute('id', 'url')
     input5.setAttribute('placeholder', 'Please enter image url');
 
     const input6 = document.createElement('input');
     input6.setAttribute('type', 'text');
     input6.setAttribute('class', 'input');
+    input6.setAttribute('id', 'saying')
     input6.setAttribute('placeholder', 'Please enter saying');
 
     const textarea = document.createElement('textarea');
     textarea.setAttribute('class', 'textarea');
+    textarea.setAttribute('id', 'textarea')
     textarea.setAttribute('name', 'content');
     textarea.setAttribute('cols', '28');
     textarea.setAttribute('rows', '7');
@@ -434,6 +441,9 @@ function createModal() {
     saveModalButton.setAttribute('type', 'button');
     saveModalButton.setAttribute('class', 'button button--pink');
     saveModalButton.textContent = 'Save';
+    saveModalButton.addEventListener('click', function() {
+        createNewArticle();
+    })
 
     modalDiv.appendChild(modalContent);
     modalContent.appendChild(modalTitle);
@@ -529,4 +539,45 @@ function deleteArticle(id) {
         .catch((error) => {
             console.error('Error:', error);
         });
+}
+
+
+// CREATING NEW ARTICLE, UPDATING THE ARTICLE LIST
+function createNewArticle() {
+    let title = document.getElementById('title').value;
+    let tag = document.getElementById('tag').value;
+    let author = document.getElementById('author').value;
+    let date = document.getElementById('date').value;
+    let imgUrl = document.getElementById('url').value;
+    let saying = document.getElementById('saying').value;
+    let textarea = document.getElementById('textarea').value;
+
+    fetch('http://localhost:3000/articles', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+            "title": title,
+            "imgUrl": imgUrl,
+            "imgAlt": 'photo',
+            "content": textarea,
+            "content2": textarea,
+            "content3": textarea,
+            "content4": textarea,
+            "classLi": "info__item",
+            "li1": tag,
+            "li2": author,
+            "li3": date,
+            "saying": saying,
+        })
+
+    }).then(res => res.json())
+
+    .then(data =>
+
+        console.log(data))
+
+    .catch((err) => console.log(err));
 }
