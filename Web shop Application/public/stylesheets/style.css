@@ -728,3 +728,16 @@ p.login-paragraph {
     color: #e74c3c;
     visibility: visible;
 }
+
+.modal {
+    position: absolute;
+    top: 450px;
+    left: 14%;
+    background: #b5b3b6;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 45px;
+    visibility: hidden;
+}
