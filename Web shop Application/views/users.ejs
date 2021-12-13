@@ -23,7 +23,7 @@
                         </div>
                         <form action="/users">
                             <button type="submit" name="username" value="<%= users[i].username %>" class="more-info-user-button btn btn-danger">More info</button>
-                            <button type="submit" name="id" value="<%= users[i].id %>" class="delete-user-button btn btn-danger">Delete</button>
+                            <button type="submit" id="<%= users[i].id %>" class="delete-user-button btn btn-danger">Delete</button>
                         </form>
                     </li>
                     <% } %>

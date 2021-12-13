@@ -4,7 +4,7 @@ if (deleteUsersButton) {
 
         item.addEventListener('click', () => {
             // ERROR - FETCH BLOCKED BY CORS POLICY
-            fetch(`http://localhost:3001/users`, {
+            fetch(`http://localhost:3001/users/` + item.id, {
                 method: 'DELETE',
                 mode: 'no-cors'
             }).then(data => {

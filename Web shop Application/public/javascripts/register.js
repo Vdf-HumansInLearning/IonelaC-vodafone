@@ -2,36 +2,37 @@ let form = document.getElementById("register-form");
 let error = document.querySelector('.error-message');
 let closeModalBtn = document.querySelector('.btn');
 
-// let nameRegex = /^[a-zA-Z ]{2,30}$/;
-// let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-// let passwordRegex = /^(?=\S*[a-z])(?=\S*[A-Z])(?=\S*\d)(?=\S*[^\w\s])\S{8,}$/;
-let firstName = document.getElementById("fname");
-let lastName = document.getElementById("lname");
-let username = document.getElementById("username");
-let email = document.getElementById("email");
-let password = document.getElementById("password");
-let checkPassword = document.getElementById("confirm-password");
+
 
 form.addEventListener('submit', function(event) {
+
+        let firstName = document.getElementById("fname");
+        let lastName = document.getElementById("lname");
+        let username = document.getElementById("username");
+        let email = document.getElementById("email");
+        let password = document.getElementById("password");
+        let checkPassword = document.getElementById("confirm-password");
+
+
         let errors = [];
 
-        if (firstName.value === '' || firstName.value === null) {
+        if (!firstName.value) {
             errors.push('First name is required');
-        } else if (lastName.value === '' || lastName.value === null) {
+        } else if (!lastName.value) {
             errors.push('Last name is required');
+        } else if (!username.value) {
+            errors.push('Username is required')
         } else if (username.value.length < 3 || username.value.length > 150) {
             errors.push('Username must be between 3 and 150 characters in length');
-        } else if (username.value === '' || username.value === null) {
-            errors.push('Username is required')
-        } else if (email.value === '' || email.value === null) {
+        } else if (!email.value) {
             errors.push('Email is required')
         } else if (!isEmail(email.value)) {
             errors.push('Email not valid!');
-        } else if (password.value === '' || password.value === null) {
+        } else if (!password.value) {
             errors.push('Password is required');
         } else if (!isPassword(password.value)) {
             errors.push('Password must have a minimum of 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character')
-        } else if (checkPassword === '' || checkPassword === null) {
+        } else if (!checkPassword.value) {
             errors.push('Please confirm your password');
         } else if (password.value !== checkPassword.value) {
             errors.push("Passwords don't match");

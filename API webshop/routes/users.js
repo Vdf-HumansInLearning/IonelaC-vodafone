@@ -7,8 +7,10 @@ var path = require('path')
 
 
 /* GET users list. */
+
 router.get('/', function(req, res, next) {
     let users = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/users.json'), 'utf8'));
+    res.status(200);
     res.json(users);
     console.log(users)
 
