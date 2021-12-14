@@ -4,7 +4,6 @@ var expect = chai.expect;
 var should = chai.should();
 let users = require("../server");
 
-
 describe("Get user", function() {
 
     it("dummy test", function() {
