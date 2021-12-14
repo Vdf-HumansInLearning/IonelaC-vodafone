@@ -10,7 +10,7 @@ on:
     branches:
       - main
     paths:
-      - API webshop/**
+      - API-webshop/**
 
 jobs:
   build:
@@ -21,8 +21,8 @@ jobs:
         with:
           node-version: 16
       - name: Install Dependencies
-        working-directory: ./API webshop
+        working-directory: ./API-webshop
         run: npm ci
       - name: Running unit tests
-        working-directory: ./API webshop
+        working-directory: ./API-webshop
         run: npm test
