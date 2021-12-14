@@ -1,9 +1,9 @@
 var chai = require('chai');
 let chaiHttp = require("chai-http");
-var assert = chai.assert; // Using Assert style
-var expect = chai.expect; // Using Expect style
-var should = chai.should(); // Using Should style
-// let users = require("../routes/users");
+var assert = chai.assert;
+var expect = chai.expect;
+var should = chai.should();
+let users = require("../server");
 
 chai.use(chaiHttp);
 
@@ -15,12 +15,6 @@ describe("Get user", function() {
     })
 
     it("get user name", () => {
-        // chai
-        //     .request(users)
-        //     .get("/users/1")
-        //     .end((err, res) => {
-        //         expect(name).to.be.equal(res.body.name);
-        //     });
         var user = {
             "id": 1,
             "name": "Leanne Graham",
@@ -30,4 +24,16 @@ describe("Get user", function() {
         var name = "Leanne Graham";
         expect(user.name).to.equal(name);
     });
+
+    it("get user name by id", () => {
+        chai
+            .request(users)
+            .get("/users/1")
+            .end((err, res) => {
+                expect(res.body.name).to.be.equal(name);
+                expect(res.should.have.status(200));
+            });
+
+    });
+    var name = "Leanne Graham";
 })

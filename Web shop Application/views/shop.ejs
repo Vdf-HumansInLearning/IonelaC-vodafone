@@ -13,14 +13,14 @@
 
                 <!-- <div class="forms"> -->
                 <!-- <form action="/shop">
-                        <div class="search-container">
-                            <input type="text" class="search-input" name="searchedBrand[]" value="<%= brands[i] %>" placeholder="Search brand...">
-                            <button type="submit" class="search-button">Search</button>
-                        </div>
-                    </form> -->
+                   
+                </form> -->
 
                 <form action="/shop" class="form">
-
+                    <div class="search-container">
+                        <input type="text" class="search-input" name="searchedBrand[]" value="<%= brands[i] %>" placeholder="Search brand...">
+                        <button type="submit" class="search-button">Search</button>
+                    </div>
                     <div id="filter-brand">
                         <p class="filter-title">Choose brand</p>
                         <% for(var i=0; i < brands.length; i++) {%>
@@ -121,6 +121,7 @@
                     })
                 </script>
                 <script src="/javascripts/cart.js"></script>
+                <script src="/javascripts/searchFunction.js"></script>
         </body>
 
 </html>

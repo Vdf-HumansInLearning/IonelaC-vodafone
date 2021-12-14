@@ -129,6 +129,10 @@ function createArticle(articles) {
         editButton.setAttribute('type', 'button');
         editButton.setAttribute('class', 'actions__btn border');
         editButton.textContent = 'Edit'
+        editButton.addEventListener('click', function() {
+            openModal();
+            editArticle(element);
+        })
 
         const deleteButton = document.createElement('button');
         deleteButton.setAttribute('type', 'button');
@@ -445,6 +449,12 @@ function createModal() {
         createNewArticle();
     })
 
+    const editModalButton = document.createElement('button');
+    editModalButton.setAttribute('type', 'button');
+    editModalButton.setAttribute('class', 'button');
+    editModalButton.textContent = 'Edit';
+    editModalButton.addEventListener('click', () => updateArticle())
+
     modalDiv.appendChild(modalContent);
     modalContent.appendChild(modalTitle);
     modalContent.appendChild(inputsContainer);
@@ -458,6 +468,7 @@ function createModal() {
     modalContent.appendChild(modalButtonsDiv);
     modalButtonsDiv.appendChild(closeModalButton);
     modalButtonsDiv.appendChild(saveModalButton);
+    modalButtonsDiv.appendChild(editModalButton)
 
     return modalDiv;
 }
@@ -474,6 +485,38 @@ renderModal();
 // CLEAR THE CONTENT
 function clearRoot() {
     root.innerHTML = '';
+}
+
+// EDIT ARTICLE FUNCTION
+function editArticle(article) {
+    let title = document.getElementById('title');
+    let tag = document.getElementById('tag');
+    let author = document.getElementById('author');
+    let date = document.getElementById('date');
+    let url = document.getElementById('url');
+    let saying = document.getElementById('saying');
+    let textarea = document.getElementById('textarea');
+
+    title.value = article.title;
+    tag.value = article.li1;
+    author.value = article.li2;
+    date.value = article.li3;
+    url.value = article.imgUrl;
+    saying.value = article.saying;
+    textarea.value = article.content;
+
+    clearUpdateButtonEvents();
+
+    editModalButton.addEventListener(
+        updateArticle(article.id)
+    )
+
+}
+
+function clearUpdateButtonEvents() {
+    let newUpdateButton = updateButton.cloneNode(true);
+    updateButton.parentNode.replaceChild(newUpdateButton, updateButton);
+    updateButton = document.querySelector('.button--pink');
 }
 
 // CREATE HASH ROUTE
@@ -580,4 +623,48 @@ function createNewArticle() {
         console.log(data))
 
     .catch((err) => console.log(err));
+}
+
+
+
+// EDITING ARTICLE
+function updateArticle(id) {
+    let title = document.getElementById('title').value;
+    let tag = document.getElementById('tag').value;
+    let author = document.getElementById('author').value;
+    let date = document.getElementById('date').value;
+    let imgUrl = document.getElementById('url').value;
+    let saying = document.getElementById('saying').value;
+    let textarea = document.getElementById('textarea').value;
+
+    const putObject = {
+        title: title,
+        li1: tag,
+        li2: author,
+        li3: date,
+        imgUrl: imgUrl,
+        saying: saying,
+        content: textarea,
+        content2: textarea,
+        content3: textarea,
+        content4: textarea
+    }
+    fetch('http://localhost:3000/articles/' + id, {
+            method: 'PUT',
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(putObject),
+        })
+        .then(response => response.json())
+        .then((data) => {
+            // get the new dog list
+            window.onhashchange = locationHashChange(data);
+
+            // remove all event from update button
+            clearUpdateButtonEvents();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }

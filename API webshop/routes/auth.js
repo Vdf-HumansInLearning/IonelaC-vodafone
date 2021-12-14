@@ -58,10 +58,28 @@ router.post('/register', function(req, res, next) {
     if (password === confirmPassword) {
         users.push({
             "id": users.length + 1,
+            'loggedin': 'false',
             "name": fname + " " + lname,
             "username": username,
             "email": email,
-            "password": password
+            "password": password,
+            "address": {
+                "street": "..",
+                "suite": "..",
+                "city": "..",
+                "zipcode": "..",
+                "geo": {
+                    "lat": "..",
+                    "lng": ".."
+                }
+            },
+            "phone": "..",
+            "website": "..",
+            "company": {
+                "name": "..",
+                "catchPhrase": "..",
+                "bs": ".."
+            }
         })
         console.log('pushed')
     } else {
