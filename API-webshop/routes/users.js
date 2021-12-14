@@ -35,4 +35,21 @@ router.get('/:id', function(req, res, next) {
 
 });
 
+router.delete('/:id', function(req, res) {
+
+    let users = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/users.json'), 'utf8'));
+    let userToDelete = users.filter((i) => i.id != req.params.id);
+    console.log(req.params.id);
+    console.log(userToDelete);
+
+    fs.writeFile(path.resolve(__dirname, '../data/users.json'), JSON.stringify(userToDelete), function(error) {
+        if (error) {
+            console.log(error)
+        } else {
+            console.log("registered")
+        }
+    });
+
+});
+
 module.exports = router;

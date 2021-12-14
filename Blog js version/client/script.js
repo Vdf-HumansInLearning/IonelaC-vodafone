@@ -45,9 +45,10 @@ function createAddButton() {
     button.setAttribute('type', 'button');
     button.setAttribute('class', 'button open-modal');
     button.textContent = '+ Add Article';
-    button.addEventListener('click', openModal)
+    button.addEventListener('click', function() {
+        openModal();
+    })
     div.appendChild(button);
-
     return div;
 }
 
@@ -128,10 +129,13 @@ function createArticle(articles) {
         const editButton = document.createElement('button');
         editButton.setAttribute('type', 'button');
         editButton.setAttribute('class', 'actions__btn border');
+        editButton.setAttribute('id', element.id);
         editButton.textContent = 'Edit'
         editButton.addEventListener('click', function() {
-            openModal();
+            openModal()
             editArticle(element);
+            document.querySelector('.button-edit-modal').style.display = 'block';
+            document.querySelector('.button--pink').style.display = 'none';
         })
 
         const deleteButton = document.createElement('button');
@@ -447,13 +451,13 @@ function createModal() {
     saveModalButton.textContent = 'Save';
     saveModalButton.addEventListener('click', function() {
         createNewArticle();
+
     })
 
     const editModalButton = document.createElement('button');
     editModalButton.setAttribute('type', 'button');
-    editModalButton.setAttribute('class', 'button');
+    editModalButton.setAttribute('class', 'button button-edit-modal');
     editModalButton.textContent = 'Edit';
-    editModalButton.addEventListener('click', () => updateArticle())
 
     modalDiv.appendChild(modalContent);
     modalContent.appendChild(modalTitle);
@@ -468,13 +472,13 @@ function createModal() {
     modalContent.appendChild(modalButtonsDiv);
     modalButtonsDiv.appendChild(closeModalButton);
     modalButtonsDiv.appendChild(saveModalButton);
-    modalButtonsDiv.appendChild(editModalButton)
+    modalButtonsDiv.appendChild(editModalButton);
 
     return modalDiv;
 }
 
 // RENDER THE MODAL
-function renderModal() {
+function renderModal(id) {
     const domModal = createModal();
     modal.appendChild(domModal);
     createModal();
@@ -505,18 +509,10 @@ function editArticle(article) {
     saying.value = article.saying;
     textarea.value = article.content;
 
-    clearUpdateButtonEvents();
-
-    editModalButton.addEventListener(
+    let saveModalButton = document.querySelector('.button-edit-modal');
+    saveModalButton.addEventListener('click', function() {
         updateArticle(article.id)
-    )
-
-}
-
-function clearUpdateButtonEvents() {
-    let newUpdateButton = updateButton.cloneNode(true);
-    updateButton.parentNode.replaceChild(newUpdateButton, updateButton);
-    updateButton = document.querySelector('.button--pink');
+    })
 }
 
 // CREATE HASH ROUTE
@@ -540,6 +536,9 @@ function openModal() {
 closeModal.addEventListener("click", function() {
     modalOverlay.style.visibility = "hidden";
     modalOverlay.style.opacity = 0;
+
+    location.hash = "#/";
+    location.reload();
 })
 
 
@@ -550,10 +549,10 @@ let body = document.querySelector('body');
 function switchTheme(e) {
     if (e.target.checked) {
         body.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark'); //add this
+        localStorage.setItem('theme', 'dark');
     } else {
         body.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light'); //add this
+        localStorage.setItem('theme', 'light');
     }
 }
 
@@ -647,7 +646,8 @@ function updateArticle(id) {
         content: textarea,
         content2: textarea,
         content3: textarea,
-        content4: textarea
+        content4: textarea,
+        "classLi": "info__item"
     }
     fetch('http://localhost:3000/articles/' + id, {
             method: 'PUT',
@@ -658,11 +658,9 @@ function updateArticle(id) {
         })
         .then(response => response.json())
         .then((data) => {
-            // get the new dog list
+
             window.onhashchange = locationHashChange(data);
 
-            // remove all event from update button
-            clearUpdateButtonEvents();
         })
         .catch(error => {
             console.error('Error:', error);

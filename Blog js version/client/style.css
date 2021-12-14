@@ -357,3 +357,8 @@ input:checked+.slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+button.button.button-edit-modal {
+    display: none;
+    background-color: var(--pink);
+}

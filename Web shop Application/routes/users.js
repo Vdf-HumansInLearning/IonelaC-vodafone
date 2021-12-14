@@ -17,7 +17,6 @@ router.get('/', function(req, res, next) {
             //     return true;
             // });
 
-
             let moreInfoUsers = response.data.filter(item => {
                 if (req.query.username) {
                     return req.query.username.includes(item.username)
@@ -34,11 +33,10 @@ router.get('/', function(req, res, next) {
         });
 });
 
-// router.delete('/:id', function(req, res) {
-//     axios.delete(`http://localhost:3001/users/${req.params.id}`, { data: req.params.id }).then()
-
-//     res.send(`Deleting user ${req.params.id}`);
-// });
+router.delete('/:id', function(req, res) {
+    axios.delete(`http://localhost:3001/users/${req.params.id}`, { data: req.params.id }).then()
+    res.send(`Deleting user ${req.params.id}`);
+});
 
 // const element = document.querySelector('.close-button');
 // axios.delete('http://localhost:3001/users')
