@@ -478,7 +478,7 @@ function createModal() {
 }
 
 // RENDER THE MODAL
-function renderModal(id) {
+function renderModal() {
     const domModal = createModal();
     modal.appendChild(domModal);
     createModal();
@@ -537,8 +537,8 @@ closeModal.addEventListener("click", function() {
     modalOverlay.style.visibility = "hidden";
     modalOverlay.style.opacity = 0;
 
-    location.hash = "#/";
-    location.reload();
+    // location.hash = "#/";
+    // location.reload();
 })
 
 
@@ -666,3 +666,10 @@ function updateArticle(id) {
             console.error('Error:', error);
         });
 }
+
+
+// paragraphs split
+// not found page/page
+// previous/next buttons
+// refactoring
+// prev and next for main page - only 4 articles per page

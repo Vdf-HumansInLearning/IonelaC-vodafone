@@ -19,27 +19,24 @@ router.get('/login', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-    let username = req.body.username;
-    let email = req.body.email;
-    let password = req.body.password;
+    // let username = req.body.username;
+    // let email = req.body.email;
+    // let password = req.body.password;
 
     console.log(req.body);
     axios.post(`http://localhost:3001/auth/login`, {
-            username: username,
-            email: email,
-            password: password
-        }, {
-            "headers": {
-                "content-type": "application/json",
-            }
-        })
-        .then(function(res) {
-            console.log(res);
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password
+        }, )
+        .then(function(response) {
+            console.log(response);
             // handle success 
-            const user = res.data;
+            let user = response.data;
             if (user) {
-                res.cookie = `user_email=${user.email}`;
-                console.log(res.cookie);
+                // res.cookie = `user_email=${user.email}`;
+                res.cookie('user_email', user.email);
+                console.log(req.cookies);
                 console.log(user.email);
             }
 
