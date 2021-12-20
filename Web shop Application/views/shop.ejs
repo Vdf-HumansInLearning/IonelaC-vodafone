@@ -17,10 +17,10 @@
                 </form> -->
 
                 <form action="/shop" class="form">
-                    <div class="search-container">
+                    <!-- <div class="search-container">
                         <input type="text" class="search-input" name="searchedBrand[]" value="<%= brands[i] %>" placeholder="Search brand...">
                         <button type="submit" class="search-button">Search</button>
-                    </div>
+                    </div> -->
                     <div id="filter-brand">
                         <p class="filter-title">Choose brand</p>
                         <% for(var i=0; i < brands.length; i++) {%>
@@ -73,7 +73,6 @@
                                     <%= phones[i].brand %>
                                         <%= phones[i].name %>
 
-
                             </h2>
                             <img class="phone-image" src="/images/<%= phones[i].brand %>.jpg" alt="phone image">
                             </a>
@@ -103,9 +102,7 @@
 
 
                         <% } %>
-
                 </ul>
-
 
             </div>
             </div>

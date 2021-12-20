@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
         .then(function(response) {
             let brands = [];
             let os = [];
+
             response.data.forEach(item => {
 
                 if (!brands.includes(item.brand)) {
@@ -30,11 +31,6 @@ router.get('/', function(req, res, next) {
                 }
                 return true;
             }).filter(item => {
-                if (req.query.searchedBrand) {
-                    return req.query.searchedBrand.includes(item.brand);
-                }
-                return true;
-            }).filter(item => {
                 if (req.query.os) {
                     return req.query.os.includes(item.operating_system)
                 }
@@ -48,6 +44,13 @@ router.get('/', function(req, res, next) {
                 }
                 return true;
             });
+
+            // .filter(item => {
+            //     if (req.query.searchedBrand) {
+            //         return req.query.searchedBrand.toLowerCase().includes(item.brand.toLowerCase());
+            //     }
+            //     return true;
+            // });
 
             console.log(req.query);
             res.render('shop', { title: "shop", phones: phones, phonesFilter: phones, brands: brands, os: os });

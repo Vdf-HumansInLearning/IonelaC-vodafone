@@ -1,8 +1,8 @@
-var chai = require('chai');
+let chai = require('chai');
 let chaiHttp = require("chai-http");
-var assert = chai.assert;
-var expect = chai.expect;
-var should = chai.should();
+let assert = chai.assert;
+let expect = chai.expect;
+let should = chai.should();
 let users = require("../server");
 chai.use(chaiHttp);
 
@@ -13,13 +13,13 @@ describe("Get user", function() {
     })
 
     it("get user name", () => {
-        var user = {
+        let user = {
             "id": 1,
             "name": "Leanne Graham",
             "username": "Bret",
             "email": "Sincere@april.biz"
         }
-        var name = "Leanne Graham";
+        let name = "Leanne Graham";
         expect(user.name).to.equal(name);
     });
 
@@ -33,5 +33,5 @@ describe("Get user", function() {
             });
 
     });
-    var name = "Leanne Graham";
+    let name = "Leanne Graham";
 })

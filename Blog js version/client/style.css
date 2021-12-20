@@ -362,3 +362,25 @@ button.button.button-edit-modal {
     display: none;
     background-color: var(--pink);
 }
+
+.error-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+}
+
+h1.error-message {
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+
+button.to-homepage {
+    padding: 13px;
+    border-radius: 10px;
+    background: pink;
+    color: white;
+    border: none;
+}

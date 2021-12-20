@@ -9,16 +9,18 @@ form.addEventListener("submit", function(event) {
 
     fetch("../users.json")
         .then(response => response.json())
-        .then(response => response.forEach(el => {
-            if (el.username === username.value && el.email === email.value && el.password === password.value) {
-                location.replace("http://localhost:2000");
-                alert(`Successfully logged in. Welcome in your account, ${el.username}!`)
+        .then(response => response.json()
+            //     response.forEach(el => {
+            //     if (el.username === username.value && el.email === email.value && el.password === password.value) {
+            //         location.replace("http://localhost:2000");
+            //         alert(`Successfully logged in. Welcome in your account, ${el.username}!`)
 
-                // PROBLEM!!! AFTER LOGGING IN, THE MODAL APPEARS BRIEFELY
-            } else if ((el.username !== username.value && username.value !== '') && (el.email !== email.value && email.value !== '') && (el.password !== password.value && password.value !== '')) {
-                document.querySelector('.modal').style.visibility = 'visible';
-            }
-        }))
+            //         // PROBLEM!!! AFTER LOGGING IN, THE MODAL APPEARS BRIEFELY
+            //     } else if ((el.username !== username.value && username.value !== '') && (el.email !== email.value && email.value !== '') && (el.password !== password.value && password.value !== '')) {
+            //         document.querySelector('.modal').style.visibility = 'visible';
+            //     }
+            // })
+        )
         .catch(err => console.log(err))
 
     if (username.value === '' || username.value == null) {

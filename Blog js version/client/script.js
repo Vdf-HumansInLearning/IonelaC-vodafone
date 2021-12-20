@@ -98,26 +98,25 @@ function createArticle(articles) {
         const domUl = document.createElement('ul');
         domUl.setAttribute('class', 'info__container');
 
-        const domLi1 = document.createElement('li');
-        domLi1.setAttribute('class', element.classLi);
-        domLi1.textContent = element.li1;
+        const domList1 = document.createElement('li');
+        domList1.setAttribute('class', 'info__item');
+        domList1.textContent = element.tag;
 
-        const domLi2 = document.createElement('li');
-        domLi2.setAttribute('class', element.classLi);
-        domLi2.textContent = element.li2;
+        const domList2 = document.createElement('li');
+        domList2.setAttribute('class', 'info__item');
+        domList2.textContent = element.author;
 
         const domSpan = document.createElement('span');
         domSpan.setAttribute('class', 'info__mark point');
         domSpan.textContent = 'Jonnathan Mercadina';
+        const domList3 = document.createElement('li');
+        domList3.setAttribute('class', 'info__item');
+        domList3.textContent = element.date;
 
-        const domLi3 = document.createElement('li');
-        domLi3.setAttribute('class', element.classLi);
-        domLi3.textContent = element.li3;
-
-        domUl.appendChild(domLi1);
-        domUl.appendChild(domLi2);
-        domLi2.appendChild(domSpan);
-        domUl.appendChild(domLi3);
+        domUl.appendChild(domList1);
+        domUl.appendChild(domList2);
+        domList2.appendChild(domSpan);
+        domUl.appendChild(domList3);
 
         const domImg = document.createElement('img');
         domImg.setAttribute('src', element.imgUrl);
@@ -149,21 +148,15 @@ function createArticle(articles) {
         domActionDiv.appendChild(editButton);
         domActionDiv.appendChild(deleteButton);
 
-        const domP = document.createElement('p');
-        domP.setAttribute('class', 'line-height');
-        domP.textContent = element.content;
-
-        const domP2 = document.createElement('p');
-        domP2.textContent = element.content2;
+        const paragraph = document.createElement('p');
+        paragraph.textContent = element.content.substring(0, element.content.length / 2);
 
         const domContainer = document.createElement('div');
         domContainer.setAttribute('class', 'content__container');
-        domContainer.appendChild(domP);
-        domContainer.appendChild(domP2);
+        domContainer.appendChild(paragraph);
 
         const readMoreDiv = document.createElement('div');
         readMoreDiv.setAttribute('class', 'readmore__container');
-
 
         const readMoreAnchor = document.createElement('a');
         readMoreAnchor.setAttribute('class', 'btn-details');
@@ -178,6 +171,7 @@ function createArticle(articles) {
             location.hash = '#/article' + element.id;
             location.reload();
         })
+
 
         readMoreDiv.appendChild(readMoreAnchor);
         readMoreAnchor.appendChild(readMoreButton);
@@ -254,6 +248,15 @@ function detailsFooter(article, artLength) {
         nextButton.style.visibility = 'hidden';
     }
 
+    // nextButton.addEventListener('click', function() {
+    //     if (article.id >= 1 && article.id < artLength) {
+    //         // changing the route to the next article
+    //         location.hash = '#/article' + (article.id + 1);
+    //         // reloading page
+    //         location.reload();
+    //     }
+    // })
+
     nextButton.addEventListener('click', function() {
         if (article.id >= 1 && article.id < artLength) {
             // changing the route to the next article
@@ -299,26 +302,26 @@ function createArticleDetails(article) {
     const domUl = document.createElement('ul');
     domUl.setAttribute('class', 'info__container');
 
-    const domLi1 = document.createElement('li');
-    domLi1.setAttribute('class', article.classLi);
-    domLi1.textContent = article.li1;
+    const domList1 = document.createElement('li');
+    domList1.setAttribute('class', 'info__item');
+    domList1.textContent = article.tag;
 
-    const domLi2 = document.createElement('li');
-    domLi2.setAttribute('class', article.classLi);
-    domLi2.textContent = article.li2;
+    const domList2 = document.createElement('li');
+    domList2.setAttribute('class', 'info__item');
+    domList2.textContent = article.author;
 
     const domSpan = document.createElement('span');
     domSpan.setAttribute('class', 'info__mark point');
     domSpan.textContent = 'Jonnathan Mercadina';
 
-    const domLi3 = document.createElement('li');
-    domLi3.setAttribute('class', article.classLi);
-    domLi3.textContent = article.li3;
+    const domList3 = document.createElement('li');
+    domList3.setAttribute('class', 'info__item');
+    domList3.textContent = article.date;
 
-    domUl.appendChild(domLi1);
-    domUl.appendChild(domLi2);
-    domLi2.appendChild(domSpan);
-    domUl.appendChild(domLi3);
+    domUl.appendChild(domList1);
+    domUl.appendChild(domList2);
+    domList2.appendChild(domSpan);
+    domUl.appendChild(domList3);
 
     const domImg = document.createElement('img');
     domImg.setAttribute('src', article.imgUrl);
@@ -328,28 +331,19 @@ function createArticleDetails(article) {
     divArticle.appendChild(domUl);
     divArticle.appendChild(domImg);
 
-    const p1 = document.createElement('p');
-    p1.setAttribute('class', 'line-height');
-    p1.textContent = article.content;
+    const firstParagraph = document.createElement('p');
+    firstParagraph.textContent = article.content.substring(0, article.content.length / 2);
 
-    const p2 = document.createElement('p');
-    p2.setAttribute('class', 'line-height');
-    p2.textContent = article.content2;
+    const secondParagraph = document.createElement('p');
+    secondParagraph.textContent = article.content.substring(article.content.length / 2);
+
     const saying = document.createElement('p');
     saying.setAttribute('class', 'saying');
     saying.textContent = article.saying;
-    const p3 = document.createElement('p');
-    p3.setAttribute('class', 'line-height');
-    p3.textContent = article.content2;
-    const p4 = document.createElement('p');
-    p4.setAttribute('class', 'line-height');
-    p4.textContent = article.content4;
 
-    divArticle.appendChild(p1);
-    divArticle.appendChild(p2);
+    divArticle.appendChild(firstParagraph);
     divArticle.appendChild(saying);
-    divArticle.appendChild(p3);
-    divArticle.appendChild(p4);
+    divArticle.appendChild(secondParagraph);
 
     return domArticle;
 }
@@ -366,6 +360,7 @@ function renderSingleArticleDetails(article) {
 
 // iterating through all articles and render single article depending of the hash
 function renderAllArticlesDetails(articles) {
+    clearRoot();
     console.log(articles)
     Array.from(articles).forEach(item => {
         if (location.hash.includes(item.id)) {
@@ -374,6 +369,27 @@ function renderAllArticlesDetails(articles) {
             renderDetailsFooter(item, articles.length);
         }
     });
+}
+
+function page404() {
+    let errorDiv = document.createElement('div');
+    errorDiv.setAttribute('class', 'error-box');
+    let errorParagraph = document.createElement('h1');
+    errorParagraph.setAttribute('class', 'error-message');
+    errorParagraph.textContent = 'Error 404 - Article not found!'
+
+    let goToHomepageButton = document.createElement('button');
+    goToHomepageButton.setAttribute('type', 'button');
+    goToHomepageButton.setAttribute('class', 'to-homepage');
+    goToHomepageButton.textContent = 'BACK TO HOMEPAGE';
+    goToHomepageButton.addEventListener('click', function() {
+        location.hash = '#/';
+        location.reload();
+    })
+
+    errorDiv.appendChild(errorParagraph);
+    errorDiv.appendChild(goToHomepageButton);
+    root.appendChild(errorDiv);
 }
 
 // CREATE MODAL
@@ -502,9 +518,9 @@ function editArticle(article) {
     let textarea = document.getElementById('textarea');
 
     title.value = article.title;
-    tag.value = article.li1;
-    author.value = article.li2;
-    date.value = article.li3;
+    tag.value = article.tag;
+    author.value = article.author;
+    date.value = article.date;
     url.value = article.imgUrl;
     saying.value = article.saying;
     textarea.value = article.content;
@@ -514,11 +530,34 @@ function editArticle(article) {
         updateArticle(article.id)
     })
 }
-
-// CREATE HASH ROUTE
+console.log(location.hash.substring(9))
+    // CREATE HASH ROUTE
 function locationHashChange(articles) {
+    (location.hash !== '#/') && page404();
+    // (!location.hash.includes('#/article')) && page404();
     (location.hash === '#/') && renderArticle(articles);
     (location.hash.includes('#/article')) && renderAllArticlesDetails(articles);
+
+    if (location.hash.substring(9) > articles.length) {
+        page404()
+    }
+
+
+
+    // if (location.hash === '#/') {
+    //     renderArticle(articles);
+    //     return;
+    // }
+
+    // if (Number(location.hash.substring(9)) > articles.length || location.hash != '#/') {
+    //     page404();
+    //     return;
+    // }
+
+    // if (location.hash.includes('#/article')) {
+    //     renderAllArticlesDetails(articles);
+    //     return;
+    // }
 }
 
 
@@ -540,34 +579,6 @@ closeModal.addEventListener("click", function() {
     // location.hash = "#/";
     // location.reload();
 })
-
-
-// DARK MODE
-const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-let body = document.querySelector('body');
-
-function switchTheme(e) {
-    if (e.target.checked) {
-        body.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        body.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-    }
-}
-
-
-toggleSwitch.addEventListener('change', switchTheme, false);
-
-const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-
-if (currentTheme) {
-    body.setAttribute('data-theme', currentTheme);
-
-    if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-    }
-}
 
 // DELETING ARTICLE DEPENDING ON THE ID, function called directly where the delete button is created (createArticle)
 function deleteArticle(id) {
@@ -605,12 +616,8 @@ function createNewArticle() {
             "imgUrl": imgUrl,
             "imgAlt": 'photo',
             "content": textarea,
-            "content2": textarea,
-            "content3": textarea,
-            "content4": textarea,
-            "classLi": "info__item",
-            "li1": tag,
-            "li2": author,
+            "tag": tag,
+            "author": author,
             "li3": date,
             "saying": saying,
         })
@@ -638,16 +645,12 @@ function updateArticle(id) {
 
     const putObject = {
         title: title,
-        li1: tag,
-        li2: author,
+        tag: tag,
+        author: author,
         li3: date,
         imgUrl: imgUrl,
         saying: saying,
         content: textarea,
-        content2: textarea,
-        content3: textarea,
-        content4: textarea,
-        "classLi": "info__item"
     }
     fetch('http://localhost:3000/articles/' + id, {
             method: 'PUT',
@@ -668,8 +671,35 @@ function updateArticle(id) {
 }
 
 
-// paragraphs split
-// not found page/page
+// paragraphs split DONE
+// not found page/page DONE
 // previous/next buttons
-// refactoring
+// refactoring DONE
 // prev and next for main page - only 4 articles per page
+
+// DARK MODE
+const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+let body = document.querySelector('body');
+
+function switchTheme(e) {
+    if (e.target.checked) {
+        body.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        body.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+    }
+}
+
+
+toggleSwitch.addEventListener('change', switchTheme, false);
+
+const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+
+if (currentTheme) {
+    body.setAttribute('data-theme', currentTheme);
+
+    if (currentTheme === 'dark') {
+        toggleSwitch.checked = true;
+    }
+}
