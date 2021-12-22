@@ -1,5 +1,40 @@
 const root = document.getElementById('root');
 
+let numberOfArticles = 4;
+let indexStart = 0;
+let indexEnd = numberOfArticles - 1;
+let totalNumberOfArticles = 0;
+
+function updateStartEndIndexes(button) {
+    if (button === 'next') {
+        indexStart = indexStart + numberOfArticles;
+        indexEnd = indexEnd + numberOfArticles;
+        console.log(indexStart, indexEnd);
+    }
+
+    if (button === 'previous') {
+        indexStart = indexStart - numberOfArticles;
+        indexEnd = indexEnd - numberOfArticles;
+        console.log(indexStart, indexEnd);
+    }
+}
+
+function updatePrevAndNextButtons() {
+    let prevBtn = document.getElementById('button-prev');
+    let nextBtn = document.getElementById('button-next');
+
+    if (indexStart === 0) {
+        prevBtn.style.display = "none";
+    } else {
+        prevBtn.style.display = "block";
+    }
+
+    if (indexEnd >= totalNumberOfArticles - 1) {
+        nextBtn.style.display = "none";
+    } else {
+        nextBtn.style.display = "block";
+    }
+}
 
 // CREATING NAV BAR
 const nav = ['Travel updates', 'Reviews', 'About', 'Contact'];
@@ -60,27 +95,32 @@ function renderAddButton() {
 
 
 // TAKING DATA FROM SERVER
-fetch('http://localhost:3000/articles')
-    .then(
-        function(response) {
-            if (response.status !== 200) {
+function getData() {
+    fetch(`http://localhost:3007/articles?indexStart=${indexStart}&indexEnd=${indexEnd}`)
+        .then(
+            function(response) {
+                if (response.status !== 200) {
 
-                console.log('Looks like there was a problem. Status Code: ' +
-                    response.status);
-                return;
+                    console.log('Looks like there was a problem. Status Code: ' +
+                        response.status);
+                    return;
+                }
+
+                // Examine the text in the response
+                response.json()
+                    .then(data => {
+                        console.log(data)
+                        window.onhashchange = locationHashChange(data.articlesList);
+                        totalNumberOfArticles = data.numberOfArticles;
+                        updatePrevAndNextButtons();
+                    });
             }
-
-            // Examine the text in the response
-            response.json()
-                .then(data => {
-                    console.log(data)
-                    window.onhashchange = locationHashChange(data);
-                });
-        }
-    )
-    .catch(function(err) {
-        console.log('Fetch Error :-S', err);
-    });
+        )
+        .catch(function(err) {
+            console.log('Fetch Error :-S', err);
+        });
+}
+getData();
 
 
 // CREATE ALL ARTICLES FROM MAIN PAGE 
@@ -168,7 +208,7 @@ function createArticle(articles) {
         readMoreAnchor.setAttribute('href', '#/article' + element.id);
         readMoreButton.textContent = 'Read More';
         readMoreButton.addEventListener('click', function() {
-            location.hash = '#/article' + element.id;
+            location.hash = '#/article/' + element.id;
             location.reload();
         })
 
@@ -207,12 +247,24 @@ function createFooter() {
     const previousButton = document.createElement('button');
 
     previousButton.setAttribute('class', 'footer__link footer__link--previous');
+    previousButton.setAttribute('id', 'button-prev')
     previousButton.textContent = 'previous';
+
+    previousButton.addEventListener('click', function() {
+        updateStartEndIndexes('previous');
+        getData();
+    });
 
     const nextButton = document.createElement('button');
     nextButton.setAttribute('id', 'button-next');
     nextButton.setAttribute('class', 'footer__link footer__link--next');
+    // nextButton.setAttribute('id', 'button-next')
     nextButton.textContent = 'next';
+
+    nextButton.addEventListener('click', () => {
+        updateStartEndIndexes('next');
+        getData();
+    });
 
     footer.appendChild(previousButton);
     footer.appendChild(nextButton);
@@ -228,8 +280,11 @@ function renderFooter() {
 }
 
 // CREATE FOOTER FROM DETAILS PAGE
-function detailsFooter(article, artLength) {
-    console.log(article)
+function detailsFooter(article, artLength, index) {
+    console.log(article);
+    console.log(artLength)
+        // console.log(index[article]);
+    console.log(index)
     const footer = document.createElement('footer');
     footer.setAttribute('class', 'footer');
     const previousButton = document.createElement('button');
@@ -242,12 +297,16 @@ function detailsFooter(article, artLength) {
     nextButton.setAttribute('class', 'footer__link footer__link--next');
     nextButton.textContent = 'next';
 
-    if (location.hash.includes('#/article1')) {
+    // if (location.hash.includes('#/article/1')) {
+    //     previousButton.style.visibility = 'hidden';
+    // } else if (location.hash.includes(`#/article/` + artLength)) {
+    //     nextButton.style.visibility = 'hidden';
+    // }
+    if (location.hash.includes('#/article/1')) {
         previousButton.style.visibility = 'hidden';
-    } else if (location.hash.includes(`#/article` + artLength)) {
+    } else if (location.hash.includes(`#/article/` + artLength)) {
         nextButton.style.visibility = 'hidden';
     }
-
     // nextButton.addEventListener('click', function() {
     //     if (article.id >= 1 && article.id < artLength) {
     //         // changing the route to the next article
@@ -260,7 +319,7 @@ function detailsFooter(article, artLength) {
     nextButton.addEventListener('click', function() {
         if (article.id >= 1 && article.id < artLength) {
             // changing the route to the next article
-            location.hash = '#/article' + (article.id + 1);
+            location.hash = '#/article/' + (article.id + 1);
             // reloading page
             location.reload();
         }
@@ -269,7 +328,7 @@ function detailsFooter(article, artLength) {
     previousButton.addEventListener("click", function() {
         if (article.id <= artLength) {
             // changing the route to the previous article
-            location.hash = '#/article' + (article.id - 1);
+            location.hash = '#/article/' + (article.id - 1);
             // reload the page
             location.reload();
         }
@@ -362,13 +421,21 @@ function renderSingleArticleDetails(article) {
 function renderAllArticlesDetails(articles) {
     clearRoot();
     console.log(articles)
-    Array.from(articles).forEach(item => {
+    Array.from(articles).forEach((item, index) => {
         if (location.hash.includes(item.id)) {
             renderNavBar(nav);
             renderSingleArticleDetails(item);
-            renderDetailsFooter(item, articles.length);
+            renderDetailsFooter(item, articles.length, index);
         }
     });
+
+    // for (let i = 1; i < articles.length; i++) {
+    //     if (location.hash === '#/article/' + (i)) {
+    //         renderNavBar(nav);
+    //         renderSingleArticleDetails(articles[i]);
+    //         renderDetailsFooter(articles[i], articles.length, i);
+    //     }
+    // }
 }
 
 function page404() {
@@ -467,7 +534,6 @@ function createModal() {
     saveModalButton.textContent = 'Save';
     saveModalButton.addEventListener('click', function() {
         createNewArticle();
-
     })
 
     const editModalButton = document.createElement('button');
@@ -530,34 +596,23 @@ function editArticle(article) {
         updateArticle(article.id)
     })
 }
-console.log(location.hash.substring(9))
+console.log(location.hash.substring(10))
     // CREATE HASH ROUTE
 function locationHashChange(articles) {
-    (location.hash !== '#/') && page404();
-    // (!location.hash.includes('#/article')) && page404();
-    (location.hash === '#/') && renderArticle(articles);
-    (location.hash.includes('#/article')) && renderAllArticlesDetails(articles);
 
-    if (location.hash.substring(9) > articles.length) {
-        page404()
+    if (location.hash === '#/') {
+        renderArticle(articles);
+        return;
+    } else {
+        let currentWindowHash = window.location.hash;
+        let articleId = currentWindowHash.substring(10);
+        if (Number(articleId) <= articles.length)
+            renderAllArticlesDetails(articles);
+        else {
+            page404();
+        }
     }
 
-
-
-    // if (location.hash === '#/') {
-    //     renderArticle(articles);
-    //     return;
-    // }
-
-    // if (Number(location.hash.substring(9)) > articles.length || location.hash != '#/') {
-    //     page404();
-    //     return;
-    // }
-
-    // if (location.hash.includes('#/article')) {
-    //     renderAllArticlesDetails(articles);
-    //     return;
-    // }
 }
 
 
@@ -605,7 +660,7 @@ function createNewArticle() {
     let saying = document.getElementById('saying').value;
     let textarea = document.getElementById('textarea').value;
 
-    fetch('http://localhost:3000/articles', {
+    fetch('http://localhost:3007/articles', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -618,7 +673,7 @@ function createNewArticle() {
             "content": textarea,
             "tag": tag,
             "author": author,
-            "li3": date,
+            "date": date,
             "saying": saying,
         })
 

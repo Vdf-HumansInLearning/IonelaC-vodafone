@@ -8,51 +8,73 @@ const { v4: uuidv4 } = require('uuid');
 
 const fs = require("fs");
 
-// Application
 const app = express();
 
-// Middleware
 app.use(morgan("tiny"));
 app.use(bodyParser.json());
 app.use(cors());
 
-// Create
 
-// app.post("/dogs", (req, res) => {
-//     const dogsList = readJSONFile();
-//     const bodyInfo = req.body;
-//     const newDog = {
-//             id: uuidv4(),
-//             ...bodyInfo
-//         }
-//         // modify dogsList to add a new element
-//     const newDogList = [...dogsList, newDog];
-//     writeJSONFile(newDogList);
-//     res.json(newDog);
-//     // save dogsList to file
-
-// });
-
-// Read One
 
 app.get("/articles/:id", (req, res) => {
     const articlesList = readJSONFile();
     const id = req.params.id;
-    // let dog = dogsList.find((dog) => dog.id === id);
-    let article = articlesList.find((article) => article.id === id);
-    // let article;
-    // Fill in your code here
+    // let article = articlesList.find(article => article.id == id);
 
 
     // for (let i = 0; i < articlesList.length; i++) {
-    //     if (articlesList[i].id === id) {
-    //         const nextId = i === articlesList.length - 1 ? null : articlesList[i + 1].id;
-    //         const prevId = i === 0 ? null : articlesList[i - 1].id;
-    //         article = {...articlesList[i], prevId, nextId };
-    //     }
+    //     console.log(articlesList[i])
     // }
-    res.json(article);
+    let article;
+    for (let i = 0; i < articlesList.length; i++) {
+        if (articlesList[i].id == id) {
+            const nextId = i === articlesList.length - 1 ? null : articlesList[i + 1].id;
+            const prevId = i === 0 ? null : articlesList[i - 1].id;
 
+            article = {...articlesList[i], prevId, nextId };
+            console.log(article);
+        }
+    }
+
+    res.json(article);
+});
+
+
+
+app.post("/articles", (req, res) => {
+    const articlesList = readJSONFile();
+    // const bodyInfo = req.body;
+    // const newArticle = {
+
+    //         ...bodyInfo
+    //     }
+    //     // modify articleList to add a new element
+    // const newArticleList = [...articlesList, newArticle];
+    // writeJSONFile(newArticleList);
+    // res.json(newArticle);
+
+    let title = req.body.title;
+    let tag = req.body.tag;
+    let author = req.body.author;
+    let date = req.body.date;
+    let imgUrl = req.body.imgUrl;
+    let saying = req.body.saying;
+    let content = req.body.content
+        // save dogsList to file
+
+    articlesList.push({
+        "id": uuidv4(),
+        "title": title,
+        "tag": tag,
+        "author": author,
+        "date": date,
+        "imgUrl": imgUrl,
+        "saying": saying,
+        "content": content
+    })
+
+    writeJSONFile(articlesList);
+    res.json(articlesList);
 });
 
 
@@ -61,7 +83,7 @@ app.get("/articles/:id", (req, res) => {
 app.get("/articles", (req, res) => {
     const articlesList = readJSONFile();
     // res.json(articlesList);
-    // Fill in your code here
+
     let indexStart = req.query.indexStart;
     let indexEnd = req.query.indexEnd;
     console.log(articlesList);
@@ -86,48 +108,21 @@ app.get("/articles", (req, res) => {
 
 });
 
-// Update
-// app.put("/dogs/:id", (req, res) => {
-//     const dogsList = readJSONFile();
-//     const updatedDogId = req.params.id;
-//     let index = "";
-//     dogsList.forEach((element, indexElement) => {
-//         if (element.id == updatedDogId) {
-//             index = indexElement;
-//         }
-//     });
-//     const updatedDog = req.body;
-//     dogsList[index] = {...updatedDog, id: dogsList[index].id };
-//     writeJSONFile(dogsList);
-//     res.json(dogsList[index])
-//         // Fill in your code here
-// });
-
-// Delete
-// app.delete("/dogs/:id", (req, res) => {
-//     const dogsList = readJSONFile();
-//     const dogId = req.params.id;
-//     const dogIndex = '';
-
-//     if (!dogId) {
-//         res.status(404).send("dog not found!");
-//         return;
-//     }
-//     dogsList.forEach((item, index) => {
-//         if (item.id === dogId) {
-//             dogIndex = index;
-//         }
-//     })
-
-//     if (dogIndex === '') {
-//         res.status(404).send("dog not found!!!");
-//         return;
-//     }
-//     const newDogsList = dogsList.filter(item => item.id != dogId);
-//     writeJSONFile(newDogsList);
-//     res.json({})
-//         // Fill in your code here
-// });
+app.put("/articles/:id", (req, res) => {
+    const articlesList = readJSONFile();
+    const updatedArticleId = req.params.id;
+    let index = "";
+    articlesList.forEach((element, indexElement) => {
+        if (element.id == updatedArticleId) {
+            index = indexElement;
+        }
+    });
+    const updatedArticle = req.body;
+    articlesList[index] = {...updatedArticle, id: articlesList[index].id };
+    writeJSONFile(articlesList);
+    res.json(articlesList[index])
+        // Fill in your code here
+});
 
 // Reading function from db.json file
 function readJSONFile() {
@@ -149,6 +144,6 @@ function writeJSONFile(content) {
 }
 
 // Starting the server
-app.listen("3005", () =>
-    console.log("Server started at: http://localhost:3005")
+app.listen("3007", () =>
+    console.log("Server started at: http://localhost:3007")
 );
